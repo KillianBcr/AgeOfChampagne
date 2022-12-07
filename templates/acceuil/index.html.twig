@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AOC - Acceuil{% endblock %}
+
+{% block body %}
+<nav>
+    <header>
+        <a href="{{path('app_acceuil') }}" class="Active">
+            Acceuil
+        </a>
+
+        <a href="" class="Nav">
+            Partenaires
+        </a>
+
+    </header>
+    <a href="www.oldhengames.com"><img src="{{ asset("img/Logos/OHGblack.png") }}" alt="Logo Old Hen Games" /></a>
+
+
+    <a href="mailto:aoc.le.jeu@gmail.com" class="Secondary-reverse">
+        Contact
+    </a>
+
+</nav>
+
+<main>
+    <div>
+        <a>href="{{path('app_acceuil') }}" class="collection" </a>
+    </div>
+
+</main>
+
+
+{% endblock %}
