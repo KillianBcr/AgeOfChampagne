@@ -1,36 +1,36 @@
-<?php
+// src/Factory/PostFactory.php
 
 namespace App\Factory;
 
-use App\Entity\Utilisateur;
-use App\Repository\UtilisateurRepository;
+use App\Entity\Post;
+use App\Repository\PostRepository;
+use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
-use Zenstruck\Foundry\RepositoryProxy;
 
 /**
- * @extends ModelFactory<Utilisateur>
+ * @extends ModelFactory<Post>
  *
- * @method        Utilisateur|Proxy create(array|callable $attributes = [])
- * @method static Utilisateur|Proxy createOne(array $attributes = [])
- * @method static Utilisateur|Proxy find(object|array|mixed $criteria)
- * @method static Utilisateur|Proxy findOrCreate(array $attributes)
- * @method static Utilisateur|Proxy first(string $sortedField = 'id')
- * @method static Utilisateur|Proxy last(string $sortedField = 'id')
- * @method static Utilisateur|Proxy random(array $attributes = [])
- * @method static Utilisateur|Proxy randomOrCreate(array $attributes = [])
- * @method static UtilisateurRepository|RepositoryProxy repository()
- * @method static Utilisateur[]|Proxy[] all()
- * @method static Utilisateur[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Utilisateur[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Utilisateur[]|Proxy[] findBy(array $attributes)
- * @method static Utilisateur[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static Utilisateur[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static Post|Proxy createOne(array $attributes = [])
+ * @method static Post[]|Proxy[] createMany(int $number, array|callable $attributes = [])
+ * @method static Post[]&Proxy[] createSequence(array|callable $sequence)
+ * @method static Post|Proxy find(object|array|mixed $criteria)
+ * @method static Post|Proxy findOrCreate(array $attributes)
+ * @method static Post|Proxy first(string $sortedField = 'id')
+ * @method static Post|Proxy last(string $sortedField = 'id')
+ * @method static Post|Proxy random(array $attributes = [])
+ * @method static Post|Proxy randomOrCreate(array $attributes = []))
+ * @method static Post[]|Proxy[] all()
+ * @method static Post[]|Proxy[] findBy(array $attributes)
+ * @method static Post[]|Proxy[] randomSet(int $number, array $attributes = []))
+ * @method static Post[]|Proxy[] randomRange(int $min, int $max, array $attributes = []))
+ * @method static PostRepository|RepositoryProxy repository()
+ * @method Post|Proxy create(array|callable $attributes = [])
  */
-final class UtilisateurFactory extends ModelFactory
+final class PostFactory extends ModelFactory
 {
     /**
-     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#factories-as-services
+     * @see https://github.com/zenstruck/foundry#factories-as-services
      *
      * @todo inject services if required
      */
@@ -40,35 +40,34 @@ final class UtilisateurFactory extends ModelFactory
     }
 
     /**
-     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories
+     * @see https://github.com/zenstruck/foundry#model-factories
      *
      * @todo add your default values here
      */
     protected function getDefaults(): array
     {
-        return [
-            'dateNais' => self::faker()->dateTime(),
-            'email' => self::faker()->text(180),
-            'nom' => self::faker()->text(30),
-            'password' => self::faker()->text(),
-            'prenom' => self::faker()->text(30),
-            'roles' => [],
-            'telephone' => self::faker()->randomNumber(),
-        ];
+    return [
+        'firstname' => self::faker()->sentence(),
+        'lastname' => self::faker()->sentence(),
+	'email' => self::faker()->unique()->sentence(),
+	'password' => self::faker()->sentence(),
+	'telUtil' => self::faker()->unique()->sentence(),
+	'dateNais' => self::faker()->sentence(),
+    ];'
     }
 
     /**
-     * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
+     * @see https://github.com/zenstruck/foundry#initialization
      */
     protected function initialize(): self
     {
         return $this
-            // ->afterInstantiate(function(Utilisateur $utilisateur): void {})
+            // ->afterInstantiate(function(Post $post) {})
         ;
     }
 
     protected static function getClass(): string
     {
-        return Utilisateur::class;
+        return Post::class;
     }
 }
