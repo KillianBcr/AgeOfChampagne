@@ -49,9 +49,9 @@ final class PostFactory extends ModelFactory
     return [
         'firstname' => self::faker()->sentence(),
         'lastname' => self::faker()->sentence(),
-	'email' => self::faker()->unique()->sentence(),
+	'email' => self::numerify('####@example.com')->unique()->sentence(),
 	'password' => self::faker()->sentence(),
-	'telUtil' => self::faker()->unique()->sentence(),
+	'telUtil' => self::numerify('##########')->unique()->sentence(),
 	'dateNais' => self::faker()->sentence(),
     ];'
     }
