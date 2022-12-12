@@ -2,8 +2,8 @@
 
 namespace App\Factory;
 
-use App\Entity\Utilisateur;
-use App\Repository\UtilisateurRepository;
+use App\Entity\Post;
+use App\Repository\PostRepository;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
@@ -46,20 +46,14 @@ final class PostFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
-        'firstname' => self::faker()->firstname();
-        'lastname' => self::faker()->lastname();
-	'email' => self::numerify('####@example.com')->unique()->email();
-	'password' => self::faker()->password();
-	'telUtil' => self::numerify('##########')->unique()->telephone();
-	'dateNais' => self::faker()->dateNais();
-    	return [
-		'firstname' => $firstname,
-		'lastname' => $lastname,
-		'email' => $email,
-		'password' => $password,
-		'telUtil' => $telUtil,
-		'dateNais' => $dateNais,
-	];
+    return [
+        'firstname' => self::faker()->sentence(),
+        'lastname' => self::faker()->sentence(),
+	'email' => self::numerify('####@example.com')->unique()->sentence(),
+	'password' => self::faker()->sentence(),
+	'telUtil' => self::numerify('##########')->unique()->sentence(),
+	'dateNais' => self::faker()->sentence(),
+    ];'
     }
 
     /**

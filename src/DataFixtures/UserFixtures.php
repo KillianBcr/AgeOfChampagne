@@ -9,6 +9,6 @@ class UserFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-      return UtilisateurFactory::createMany(10);
+        UtilisateurFactory::createMany(10);
     }
 }
