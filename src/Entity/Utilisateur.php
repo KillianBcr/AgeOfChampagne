@@ -40,15 +40,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateNais = null;
 
-    private function __construct(string $email, string $nom, string $prenom, int $telephone, string $password)
-    {
-        $this->email = $email;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->telephone = $telephone;
-        $this->password = $password;
-
-    }
     public function getId(): ?int
     {
         return $this->id;
