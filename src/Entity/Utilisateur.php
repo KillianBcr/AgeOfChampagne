@@ -34,8 +34,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 30)]
     private ?string $prenom = null;
 
-    #[ORM\Column]
-    private ?int $telephone = null;
+    #[ORM\Column(length:30)]
+    private ?string $telephone = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateNais = null;
@@ -153,12 +153,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
 
