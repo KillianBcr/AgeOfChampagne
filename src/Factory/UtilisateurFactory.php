@@ -11,21 +11,21 @@ use Zenstruck\Foundry\RepositoryProxy;
 /**
  * @extends ModelFactory<Utilisateur>
  *
- * @method        Utilisateur|Proxy create(array|callable $attributes = [])
- * @method static Utilisateur|Proxy createOne(array $attributes = [])
- * @method static Utilisateur|Proxy find(object|array|mixed $criteria)
- * @method static Utilisateur|Proxy findOrCreate(array $attributes)
- * @method static Utilisateur|Proxy first(string $sortedField = 'id')
- * @method static Utilisateur|Proxy last(string $sortedField = 'id')
- * @method static Utilisateur|Proxy random(array $attributes = [])
- * @method static Utilisateur|Proxy randomOrCreate(array $attributes = [])
+ * @method        Utilisateur|Proxy                     create(array|callable $attributes = [])
+ * @method static Utilisateur|Proxy                     createOne(array $attributes = [])
+ * @method static Utilisateur|Proxy                     find(object|array|mixed $criteria)
+ * @method static Utilisateur|Proxy                     findOrCreate(array $attributes)
+ * @method static Utilisateur|Proxy                     first(string $sortedField = 'id')
+ * @method static Utilisateur|Proxy                     last(string $sortedField = 'id')
+ * @method static Utilisateur|Proxy                     random(array $attributes = [])
+ * @method static Utilisateur|Proxy                     randomOrCreate(array $attributes = [])
  * @method static UtilisateurRepository|RepositoryProxy repository()
- * @method static Utilisateur[]|Proxy[] all()
- * @method static Utilisateur[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Utilisateur[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Utilisateur[]|Proxy[] findBy(array $attributes)
- * @method static Utilisateur[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
- * @method static Utilisateur[]|Proxy[] randomSet(int $number, array $attributes = [])
+ * @method static Utilisateur[]|Proxy[]                 all()
+ * @method static Utilisateur[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Utilisateur[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Utilisateur[]|Proxy[]                 findBy(array $attributes)
+ * @method static Utilisateur[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
+ * @method static Utilisateur[]|Proxy[]                 randomSet(int $number, array $attributes = [])
  */
 final class UtilisateurFactory extends ModelFactory
 {
@@ -46,14 +46,16 @@ final class UtilisateurFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $domain = self::faker()->domainName();
+
         return [
             'dateNais' => self::faker()->dateTime(),
-            'email' => self::faker()->text(180),
-            'nom' => self::faker()->text(30),
-            'password' => self::faker()->text(),
-            'prenom' => self::faker()->text(30),
+            'email' => self::faker()->unique()->numerify('####@'.$domain),
+            'nom' => self::faker()->firstName(),
+            'password' => 'test',
+            'prenom' => self::faker()->lastName(),
             'roles' => [],
-            'telephone' => self::faker()->text(30),
+            'telephone' => self::faker()->unique()->phoneNumber(),
         ];
     }
 
