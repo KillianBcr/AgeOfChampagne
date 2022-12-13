@@ -2,16 +2,14 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\VigneronFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 class VigneronFixtures extends Fixture
 {
-    public function load(ObjectManager $manager): void
+    public function load(ObjectManager $manager): array
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
-        $manager->flush();
+        return  VigneronFactory::createMany(100);
     }
 }
