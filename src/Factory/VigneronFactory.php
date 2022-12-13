@@ -49,7 +49,7 @@ final class VigneronFactory extends ModelFactory
         $firstname = self::faker()->firstNameMale();
         $lastname = self::faker()->lastName();
         $domain = self::faker()->domainName();
-        $email = transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($firstname.'.'.$lastname.'@'.$domain));
+        $email = mb_strtolower($firstname.'.'.$lastname.'@'.$domain);
         return [
             'description' => self::faker()->sentence(10),
             'nom' => $firstname,
