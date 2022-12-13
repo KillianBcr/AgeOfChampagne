@@ -46,10 +46,16 @@ final class VigneronFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
+        $firstname = self::faker()->firstNameMale();
+        $lastname = self::faker()->lastName();
+        $domain = self::faker()->domainName();
+        $email = transliterator_transliterate('Any-Latin; Latin-ASCII', mb_strtolower($firstname.'.'.$lastname.'@'.$domain));
         return [
-            'description' => self::faker()->text(),
-            'nom' => self::faker()->text(30),
-            'prenom' => self::faker()->text(30),
+            'description' => self::faker()->sentence(10),
+            'nom' => $firstname,
+            'prenom' => $lastname,
+            'telephone' => self::faker()->unique()->phoneNumber(),
+            'email' => $email,
         ];
     }
 
