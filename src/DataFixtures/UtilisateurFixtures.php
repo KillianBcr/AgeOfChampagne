@@ -14,7 +14,7 @@ class UtilisateurFixtures extends Fixture
             'nom' => 'Boscher',
             'prenom' => 'Killian',
             'email' => 'root@example.com',
-            'roles' => 'ROLE_ADMIN',
+            'roles' => ['ROLE_ADMIN'],
         ]);
         return $admin;
     }
