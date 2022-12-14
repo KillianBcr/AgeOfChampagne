@@ -1,15 +1,12 @@
 {% extends 'base.html.twig' %}
 
-
-
-
 {% block title %}Liste des vignerons{% endblock %}
 
 {% block body %}
     <h1>Liste des vignerons</h1>
     <ul>
         {% for vigneron in vignerons %}
-            <li><a href ='{{ path('app_vigneron', {'id': vigneron.id}) }}'>{{ vigneron.nom }}, {{ vigneron.prenom }}</li>
+            <li><a href ='{{ path('app_vigneron_show', {'id': vigneron.id}) }}'>{{ vigneron.nom }}, {{ vigneron.prenom }}</li>
         {% endfor %}
     </ul>
 

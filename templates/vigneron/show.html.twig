@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ vigneron.prenom }} {{ vigneron.nom }}{% endblock %}
+
+{% block body %}
+    <h1>{{ vigneron.prenom }} {{ vigneron.nom }}</h1>
+    <dl>
+        <dt>Nom</dt>
+        <dd>{{ vigneron.prenom }}</dd>
+
+        <dt>Prénom</dt>
+        <dd>{{ vigneron.nom }}</dd>
+
+    </dl>
+
+{% endblock %}
