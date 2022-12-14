@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Vigneron;
 use App\Repository\VigneronRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,4 +19,17 @@ class VigneronController extends AbstractController
             'vignerons' => $vignerons,
         ]);
     }
+
+    #[Route('/vigneron/{id}', name: 'app_vigneron_show',
+        requirements: [
+            'id' => "\d+",
+        ]
+    )]
+    public function show(Vigneron $vigneron): Response
+    {
+
+        return $this->render('vigneron/show.html.twig',
+            ['vigneron' => $vigneron]);
+    }
+
 }
