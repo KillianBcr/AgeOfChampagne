@@ -10,9 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class VigneronController extends AbstractController
 {
     #[Route('/vigneron', name: 'app_vigneron')]
-    public function index(VigneronRepository $rep): Response
+    public function index(VigneronRepository $repository): Response
     {
-        $vignerons = $rep->findBy([], ['nom' => 'ASC'], ['prenom' => 'ASC']);
+        $vignerons = $repository->findBy([], ['nom' => 'ASC', 'prenom' => 'ASC']);
 
         return $this->render('vigneron/index.html.twig', [
             'vignerons' => $vignerons,
