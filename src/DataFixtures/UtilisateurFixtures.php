@@ -8,14 +8,8 @@ use Doctrine\Persistence\ObjectManager;
 
 class UtilisateurFixtures extends Fixture
 {
-    public function load(ObjectManager $manager): \App\Entity\Utilisateur|\Zenstruck\Foundry\Proxy
+    public function load(ObjectManager $manager): void
     {
-        $admin = UtilisateurFactory::createOne([
-            'nom' => 'Boscher',
-            'prenom' => 'Killian',
-            'email' => 'root@example.com',
-            'roles' => ['ROLE_ADMIN'],
-        ]);
-        return $admin;
+        $manager->flush();
     }
 }
