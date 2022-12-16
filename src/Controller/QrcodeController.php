@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class QrcodeController extends AbstractController
 {
-    #[IsGranted('IS_AUTHENTICATED_FULLY', statusCode: 404, message: 'Post not found')]
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     #[Route('/qrcode', name: 'app_qrcode')]
     public function index(): Response
     {
