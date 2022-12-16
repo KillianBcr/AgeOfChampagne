@@ -47,7 +47,7 @@ final class CarteFactory extends ModelFactory
     protected function getDefaults(): array
     {
         $imageCarte = self::faker()->image();
-        $qrCode = self::faker()->qrcode();
+        $qrCode = self::faker()->sentence('1');
 
         return [
             'imageCarte' => $imageCarte,

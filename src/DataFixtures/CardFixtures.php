@@ -2,16 +2,14 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\CarteFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 class CardFixtures extends Fixture
 {
-    public function load(ObjectManager $manager): void
+    public function load(ObjectManager $manager): array
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
-        $manager->flush();
+        return CarteFactory::createMany(5);
     }
 }
