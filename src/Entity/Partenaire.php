@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PartenaireRepository;
+use Cassandra\Blob;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PartenaireRepository::class)]
@@ -25,8 +27,8 @@ class Partenaire
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
+    #[ORM\Column(type: Types::BLOB, nullable: true)]
+    private $image = null;
 
     public function getId(): ?int
     {
@@ -81,15 +83,16 @@ class Partenaire
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage($image): self
     {
         $this->image = $image;
 
         return $this;
     }
+
 }
