@@ -19,7 +19,12 @@
 
     <ul>
 	<li><a href="{{path('app_qrcode')}}">Scanner Carte</a></li>
-	<li><a href="{{path('app_vigneron')}}">Vigneron</a></li>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{path('app_vigneron')}}">Vigneron</a></li>
+        {% endif %}
+
+	<li><a href="{{path('app_partenaire')}}">Partenaire</a></li>
     </ul>
 </div>
 {% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des partenaires{% endblock %}
+
+{% block body %}
+    <h1>Liste des partenaires</h1>
+    <ul>
+        {% for partenaire in partenaires %}
+            <li><a href ='{{ path('app_partenaire_show', {'id': partenaire.id}) }}'>{{ partenaire.nom }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
