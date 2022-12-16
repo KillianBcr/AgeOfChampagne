@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Vigneron;
 use App\Repository\VigneronRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class VigneronController extends AbstractController
 {
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     #[Route('/vigneron', name: 'app_vigneron')]
     public function index(VigneronRepository $repository): Response
     {
@@ -20,6 +22,7 @@ class VigneronController extends AbstractController
         ]);
     }
 
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     #[Route('/vigneron/{id}', name: 'app_vigneron_show',
         requirements: [
             'id' => "\d+",
