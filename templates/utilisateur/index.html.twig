@@ -6,7 +6,7 @@
     <h1>Liste des utilisateur</h1>
     <ul>
         {% for utilisateur in utilisateurs %}
-            <li><a href ='{{ path('app_utilisateur', {'id': utilisateur.id}) }}'>{{ utilisateur.nom }}  {{ utilisateur.prenom }}</li>
+            <li><a href ='{{ path('app_utilisateur_show', {'id': utilisateur.id}) }}'>{{ utilisateur.nom }}  {{ utilisateur.prenom }}</li>
         {% endfor %}
     </ul>
 

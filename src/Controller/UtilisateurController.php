@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateur;
 use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,5 +18,16 @@ class UtilisateurController extends AbstractController
         return $this->render('utilisateur/index.html.twig', [
             'utilisateurs' => $utilisateur,
         ]);
+    }
+    #[Route('/utilisateur/{id}', name: 'app_utilisateur_show',
+        requirements: [
+            'id' => "\d+",
+        ]
+    )]
+    public function show(Utilisateur $utilisateur): Response
+    {
+
+        return $this->render('utilisateur/show.html.twig',
+            ['utilisateur' => $utilisateur]);
     }
 }
