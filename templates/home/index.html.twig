@@ -9,7 +9,13 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Bienvenue sur Age Of Champagne🍾</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <h1>Bienvenue sur Age Of Champagne🍾 {{ utilisateur.prenom}}</h1>
+    {% endif %}
+    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+        <h1>Bienvenue sur Age Of Champagne🍾</h1>
+    {% endif %}
 
     <ul>
 	<li><a href="{{path('app_qrcode')}}">Scanner Carte</a></li>
