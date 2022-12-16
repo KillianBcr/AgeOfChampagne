@@ -49,7 +49,7 @@ final class PartenaireFactory extends ModelFactory
         $domain = self::faker()->domainName();
 
         return [
-            'description' => self::faker()->sentence(150),
+            'description' => self::faker()->sentence(10),
             'email' => self::faker()->unique()->numerify('####@'.$domain),
             'nom' => self::faker()->firstName(),
             'telephone' => self::faker()->unique()->phoneNumber(),
