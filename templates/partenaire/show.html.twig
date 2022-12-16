@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ partenaire.nom }}{% endblock %}
+
+{% block body %}
+    <h1>{{ partenaire.nom }}</h1>
+    <dl>
+        <dt>Description</dt>
+        <dd>{{ partenaire.description }}</dd>
+
+        <dt>Contact</dt>
+        <dd>Email : {{ partenaire.email }} </dd>
+        <dd>Téléphone : {{ partenaire.telephone }}</dd>
+    </dl>
+
+{% endblock %}

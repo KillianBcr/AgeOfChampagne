@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Partenaire;
+use App\Entity\Vigneron;
 use App\Repository\PartenaireRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,5 +21,18 @@ class PartenaireController extends AbstractController
         return $this->render('partenaire/index.html.twig', [
             'partenaires' => $partenaires,
         ]);
+    }
+
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[Route('/partenaire/{id}', name: 'app_partenaire_show',
+        requirements: [
+            'id' => "\d+",
+        ]
+    )]
+    public function show(Partenaire $partenaire): Response
+    {
+
+        return $this->render('partenaire/show.html.twig',
+            ['partenaire' => $partenaire]);
     }
 }
