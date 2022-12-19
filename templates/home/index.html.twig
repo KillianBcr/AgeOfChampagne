@@ -17,8 +17,16 @@
         <h1>Bienvenue sur Age Of Champagne🍾</h1>
     {% endif %}
 
+    {% for message in app.flashes('success') %}
+        <div class ="alert alert-success mt-4">{{ message }}</div>
+    {% endfor %}
+
     <ul>
 	<li><a href="{{path('app_qrcode')}}">Scanner Carte</a></li>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <li><a href="{{ path('app_profile',{ 'id': utilisateur.id }) }}">Modifier profil</a></li>
+        {% endif %}
 
         {% if is_granted('ROLE_ADMIN') %}
             <li><a href="{{path('app_vigneron')}}">Vigneron</a></li>
