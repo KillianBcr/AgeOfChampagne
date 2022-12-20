@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\User;
 
 class ProfileController extends AbstractController
 {
-    #[Route('/profile/edition/{id}', name: 'app_profile', requirements: [
+    #[Route('/compte/edition/{id}', name: 'app_profile', requirements: [
         'id' => "\d+",
     ],
         methods: ['GET','POST'])]
