@@ -39,6 +39,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length:30)]
     private ?string $telephone = null;
 
+    #[ORM\Column(type: Types::BLOB, nullable: true)]
+    private $avatar = null;
+
 
     public function getId(): ?int
     {
@@ -161,6 +164,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar($avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
