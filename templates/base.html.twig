@@ -26,9 +26,15 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link" href="mailto: aoc.le.jeu@gmail.com">Contact</a>
+
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
                     {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="nav-link" href="{{ path('admin') }}">Admin</a>
+                    {% endif %}
+
                     {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
                         <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
                     {% endif %}
