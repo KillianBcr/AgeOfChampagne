@@ -8,14 +8,14 @@
             <div class="navbar-nav">
                 <a class="nav-link" href="mailto: aoc.le.jeu@gmail.com">Contact</a>
 
-                {% if is_granted('ROLE_ADMIN') %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a class="nav-link" href="{{ path('app_partenaire') }}">Partenaires</a>
                 {% endif %}
             </div>
 
             <div class="d-flex">
                 <ul class="navbar-nav me-auto">
-                    {% if app.user %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ utilisateur.nom }} {{ utilisateur.prenom }}</a>
                             <div class="dropdown-menu">
