@@ -16,10 +16,12 @@ class PartenaireController extends AbstractController
     #[Route('/partenaire', name: 'app_partenaire')]
     public function index(PartenaireRepository $repository): Response
     {
+        $utilisateur = $this->getUser();
         $partenaires = $repository->findBy([], ['nom' => 'ASC']);
 
         return $this->render('partenaire/index.html.twig', [
             'partenaires' => $partenaires,
+            'utilisateur' => $utilisateur,
         ]);
     }
 
