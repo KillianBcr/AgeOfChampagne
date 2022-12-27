@@ -17,31 +17,10 @@
         {% endblock %}
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Acceuil</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="mailto: aoc.le.jeu@gmail.com">Contact</a>
+    {% block header %}
+        {% include "partials/_header.html.twig" %}
+    {% endblock %}
 
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
-                    {% endif %}
-
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a class="nav-link" href="{{ path('admin') }}">Admin</a>
-                    {% endif %}
-
-                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </nav>
     {% block body %}
     {% endblock %}
 
