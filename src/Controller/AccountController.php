@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AccountController extends AbstractController
 {
-    #[Route('/compte/{id}', name: 'app_account', requirements: [
+    #[Route('/profile/{id}', name: 'app_account', requirements: [
         'id' => "\d+",
     ],
         methods: ['GET','POST'])]
