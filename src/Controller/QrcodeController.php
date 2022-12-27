@@ -13,8 +13,10 @@ class QrcodeController extends AbstractController
     #[Route('/qrcode', name: 'app_qrcode')]
     public function index(): Response
     {
+        $utilisateur = $this->getUser();
         return $this->render('qrcode/index.html.twig', [
             'controller_name' => 'QrcodeController',
+            'utilisateur' => $utilisateur,
         ]);
     }
 }
