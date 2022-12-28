@@ -67,10 +67,7 @@ class RegistrationFormType extends AbstractType
             ])
 
             ->add('datenais', Type\DateType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-
-                ],
+                'input'=>'datetime',
                 'label' => 'Date de naissance',
                 'label_attr' => [
                     'class' => 'form-label  mt-4',
