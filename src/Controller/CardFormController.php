@@ -24,7 +24,6 @@ class CardFormController extends AbstractController
             $carte->setImageCarte($form->get('imageCarte')->getData());
             $manager->persist($carte);
             $manager->flush();
-
         }
         return $this->renderForm('pages/carte/add.html.twig', [
             'controller_name' => 'CardFormController',
