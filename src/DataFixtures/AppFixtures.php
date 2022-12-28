@@ -32,6 +32,7 @@ class AppFixtures extends Fixture
             ->setTelephone('0612345678')
             ->setCp($this->faker->postcode())
             ->setVille($this->faker->city())
+            ->setDatenais($this->faker->dateTime())
             ->setRoles(["ROLE_ADMIN"]);
         $password = $this->userPasswordHasher->hashPassword($admin,"test");
         $admin->setPassword($password);
@@ -46,6 +47,7 @@ class AppFixtures extends Fixture
                 ->setPrenom($this->faker->firstName())
                 ->setCp($this->faker->postcode())
                 ->setVille($this->faker->city())
+                ->setDatenais($this->faker->dateTime())
                 ->setEmail($user->getNom().$user->getPrenom().'@'.$domain)
                 ->setTelephone($this->faker->unique()->phoneNumber())
                 ->setRoles(['ROLE_USER']);
