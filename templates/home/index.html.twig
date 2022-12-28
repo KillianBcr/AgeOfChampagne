@@ -11,7 +11,7 @@
 <div class="example-wrapper">
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <h1>Bienvenue sur Age Of Champagne🍾 {{ utilisateur.prenom}}</h1>
+        <h1>Bienvenue sur Age Of Champagne🍾 {{ app.user.prenom}}</h1>
     {% endif %}
     {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
         <h1>Bienvenue sur Age Of Champagne🍾</h1>
