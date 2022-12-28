@@ -3,15 +3,9 @@
 {% block title %}Modification de profil{% endblock %}
 
 {% block body %}
-    <div>
-        <h1>Modification des informations</h1>
+    <div class="container">
+        <h1 class="mt-4">Modification du profile</h1>
 
-        {{ form_start(form) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.nom) }}
-        {{ form_row(form.prenom) }}
-        {{ form_row(form.telephone) }}
-        <button class="btn btn-lg btn-primary" type="submit" class="btn">Valider</button>
-        {{ form_end(form) }}
+        {{ form(form) }}
     </div>
 {% endblock %}
