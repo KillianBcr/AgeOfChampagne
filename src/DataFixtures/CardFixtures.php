@@ -10,6 +10,6 @@ class CardFixtures extends Fixture
 {
     public function load(ObjectManager $manager): array
     {
-        return CarteFactory::createMany(5);
+        return CarteFactory::createMany(10);
     }
 }
