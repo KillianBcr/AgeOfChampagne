@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProfileController extends AbstractController
@@ -16,7 +17,7 @@ class ProfileController extends AbstractController
         'id' => "\d+",
     ],
         methods: ['GET', 'POST'])]
-    public function edit(Utilisateur $user, Request $request, EntityManagerInterface $manager): Response
+    public function edit(Utilisateur $user, Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $hasher): Response
     {
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
@@ -30,12 +31,16 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user = $form->getData();
-            $manager->persist($user);
-            $manager->flush();
-            $this->addFlash('success', 'Les informations de votre compte ont bien été modifiées');
-
-            return $this->redirectToRoute('app_home');
+            if ($hasher->isPasswordValid($user, $form->get('plainPassword')->getData())) {
+                $user = $form->getData();
+                $manager->persist($user);
+                $manager->flush();
+                $this->addFlash('success', 'Les informations de votre compte ont bien été modifiées');
+                return $this->redirectToRoute('app_home');
+            }
+            else {
+                $this->addFlash('warning', 'Mot de passe incorrect.');
+            }
         }
 
         return $this->render('pages/user/edit.html.twig', [
