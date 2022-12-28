@@ -14,7 +14,7 @@ class CardFormController extends AbstractController
     {
         $form = $this->createForm(CarteType::class);
 
-        return $this->renderForm('card_form/index.html.twig', [
+        return $this->renderForm('pages/carte/add.html.twig', [
             'controller_name' => 'CardFormController',
             'formulaire' => $form
         ]);

@@ -18,7 +18,7 @@ class PartenaireController extends AbstractController
     {
         $partenaires = $repository->findBy([], ['nom' => 'ASC']);
 
-        return $this->render('partenaire/index.html.twig', [
+        return $this->render('pages/partenaire/index.html.twig', [
             'partenaires' => $partenaires,
         ]);
     }
@@ -32,7 +32,7 @@ class PartenaireController extends AbstractController
     public function show(Partenaire $partenaire): Response
     {
 
-        return $this->render('partenaire/show.html.twig',
+        return $this->render('pages/partenaire/show.html.twig',
             ['partenaire' => $partenaire]);
     }
 }
