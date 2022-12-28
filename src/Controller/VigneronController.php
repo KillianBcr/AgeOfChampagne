@@ -17,7 +17,7 @@ class VigneronController extends AbstractController
     {
         $vignerons = $repository->findBy([], ['nom' => 'ASC', 'prenom' => 'ASC']);
 
-        return $this->render('vigneron/index.html.twig', [
+        return $this->render('pages/vigneron/index.html.twig', [
             'vignerons' => $vignerons,
         ]);
     }
@@ -31,7 +31,7 @@ class VigneronController extends AbstractController
     public function show(Vigneron $vigneron): Response
     {
 
-        return $this->render('vigneron/show.html.twig',
+        return $this->render('pages/vigneron/show.html.twig',
             ['vigneron' => $vigneron]);
     }
 
