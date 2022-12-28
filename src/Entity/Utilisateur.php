@@ -48,6 +48,16 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'datetime_immutable',nullable: true)]
     private ?\DateTimeImmutable $update_at = null;
 
+    #[ORM\Column(length: 6)]
+    private ?string $cp = null;
+
+    #[ORM\Column(length: 30)]
+    private ?string $ville = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $datenais = null;
+
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
@@ -215,4 +225,41 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    public function setCp(string $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getDatenais(): ?\DateTimeInterface
+    {
+        return $this->datenais;
+    }
+
+    public function setDatenais(\DateTimeInterface $datenais): self
+    {
+        $this->datenais = $datenais;
+
+        return $this;
+    }
+
 }

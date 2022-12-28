@@ -25,11 +25,15 @@ class AppFixtures extends Fixture
     {
         $users = [];
         $admin = new Utilisateur();
-        $admin->setNom('SAMINA');
-        $admin->setPrenom('Angelo');
-        $admin->setEmail('root@example.com');
-        $admin->setTelephone('0612345678');
-        $admin->setRoles(["ROLE_ADMIN"]);
+        $admin
+            ->setNom('SAMINA')
+            ->setPrenom('Angelo')
+            ->setEmail('root@example.com')
+            ->setTelephone('0612345678')
+            ->setCp($this->faker->postcode())
+            ->setVille($this->faker->city())
+            ->setDatenais($this->faker->dateTime())
+            ->setRoles(["ROLE_ADMIN"]);
         $password = $this->userPasswordHasher->hashPassword($admin,"test");
         $admin->setPassword($password);
 
@@ -41,6 +45,9 @@ class AppFixtures extends Fixture
             $user = new Utilisateur();
             $user->setNom($this->faker->lastName())
                 ->setPrenom($this->faker->firstName())
+                ->setCp($this->faker->postcode())
+                ->setVille($this->faker->city())
+                ->setDatenais($this->faker->dateTime())
                 ->setEmail($user->getNom().$user->getPrenom().'@'.$domain)
                 ->setTelephone($this->faker->unique()->phoneNumber())
                 ->setRoles(['ROLE_USER']);

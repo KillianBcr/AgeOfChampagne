@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToArrayTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -13,6 +14,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Form\Extension\Core\Type;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -62,6 +65,15 @@ class RegistrationFormType extends AbstractType
                     new Length(['min' => 2, 'max' => 30]),
                 ],
             ])
+
+            ->add('datenais', Type\DateType::class, [
+                'input'=>'datetime',
+                'label' => 'Date de naissance',
+                'label_attr' => [
+                    'class' => 'form-label  mt-4',
+                ],
+            ])
+
             ->add('telephone', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
@@ -74,6 +86,36 @@ class RegistrationFormType extends AbstractType
                 ],
                 'constraints' => [
                     new Length(['min' => 2, 'max' => 30]),
+                ],
+            ])
+
+            ->add('ville', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '30',
+                ],
+                'label' => 'Ville',
+                'label_attr' => [
+                    'class' => 'form-label  mt-4',
+                ],
+                'constraints' => [
+                    new Length(['min' => 2, 'max' => 30]),
+                ],
+            ])
+
+            ->add('cp', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlenght' => '5',
+                    'maxlenght' => '6',
+                ],
+                'label' => 'Code postale',
+                'label_attr' => [
+                    'class' => 'form-label  mt-4',
+                ],
+                'constraints' => [
+                    new Length(['min' => 5, 'max' => 6]),
                 ],
             ])
 
