@@ -77,6 +77,36 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
 
+            ->add('ville', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '30',
+                ],
+                'label' => 'Ville',
+                'label_attr' => [
+                    'class' => 'form-label  mt-4',
+                ],
+                'constraints' => [
+                    new Length(['min' => 2, 'max' => 30]),
+                ],
+            ])
+
+            ->add('cp', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlenght' => '5',
+                    'maxlenght' => '6',
+                ],
+                'label' => 'Code postale',
+                'label_attr' => [
+                    'class' => 'form-label  mt-4',
+                ],
+                'constraints' => [
+                    new Length(['min' => 5, 'max' => 6]),
+                ],
+            ])
+
             ->add('plainPassword', RepeatedType::class, [
                 'mapped' => false,
                 'type' => PasswordType::class,
