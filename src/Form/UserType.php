@@ -89,6 +89,7 @@ class UserType extends AbstractType
                 'attr' => [
                     'class' => 'btn btn-lg btn-primary',
                 ],
+                'label'=>'Confirmer'
             ]);
     }
 
