@@ -6,6 +6,7 @@ use App\Entity\Utilisateur;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -33,7 +34,8 @@ class UtilisateurCrudController extends AbstractCrudController
             TextField::new('prenom'),
             TextField::new('telephone'),
             ArrayField::new('roles')->hideOnIndex(),
-
+            DateTimeField::new('created_at'),
+            DateTimeField::new('update_at')->hideOnIndex(),
             // caractéristiques du champs de mot de passe
             //TextField::new('password')
             // Uniquement visible dans le formulaire
