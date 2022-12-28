@@ -54,6 +54,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 30)]
     private ?string $ville = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $datenais = null;
+
 
     public function __construct()
     {
@@ -243,6 +246,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVille(string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getDatenais(): ?\DateTimeInterface
+    {
+        return $this->datenais;
+    }
+
+    public function setDatenais(\DateTimeInterface $datenais): self
+    {
+        $this->datenais = $datenais;
 
         return $this;
     }
