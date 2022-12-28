@@ -35,6 +35,8 @@ class ProfileController extends AbstractController
             if ($hasher->isPasswordValid($user, $form->get('plainPassword')->getData())) {
                 $user = $form->getData();
                 $manager->persist($user);
+                $currentUser = $this->getUser();
+                $currentUser->setUpdateAt(new \DateTimeImmutable());
                 $manager->flush();
                 $this->addFlash('success', 'Les informations de votre compte ont bien été modifiées');
 
@@ -56,6 +58,8 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             if ($hasher->isPasswordValid($user, $form->get('plainPassword')->getData())) {
+                $currentUser = $this->getUser();
+                $currentUser->setUpdateAt(new \DateTimeImmutable());
                 $password = $form->get('newPassword')->getData();
                 $user->setPassword(
                     $hasher->hashPassword($user, $password)
