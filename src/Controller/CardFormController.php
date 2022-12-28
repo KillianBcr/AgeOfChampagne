@@ -20,8 +20,10 @@ class CardFormController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $carte = new Carte();
+            $carte->setName($form->get('name')->getData());
             $carte->setQrCode($form->get('qrCode')->getData());
             $carte->setImageCarte($form->get('imageCarte')->getData());
+            $carte->setDescription($form->get('description')->getData());
             $manager->persist($carte);
             $manager->flush();
         }
