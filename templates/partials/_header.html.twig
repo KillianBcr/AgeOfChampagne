@@ -17,9 +17,9 @@
                 <ul class="navbar-nav me-auto">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ utilisateur.nom }} {{ utilisateur.prenom }}</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.nom }} {{ app.user.prenom }}</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ path('app_profile', {id : utilisateur.id}) }}">Modifier mes informations</a>
+                                <a class="dropdown-item" href="{{ path('app_profile', {id : app.user.id}) }}">Modifier mes informations</a>
                                 <a class="dropdown-item" href="">Modifier mon mot de passe</a>
                                 <div class="dropdown-divider"></div>
 
