@@ -2,27 +2,28 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\FichePartenaire;
 use App\Entity\Utilisateur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use function Zenstruck\Foundry\faker;
 
 class AppFixtures extends Fixture
 {
     public UserPasswordHasherInterface $userPasswordHasher;
     private Generator $faker;
 
-
     public function __construct(UserPasswordHasherInterface $userPasswordHasher)
     {
         $this->userPasswordHasher = $userPasswordHasher;
         $this->faker = Factory::create('fr_FR');
     }
+
     public function load(ObjectManager $manager): void
     {
+        // Utilisateurs + Admin
         $users = [];
         $admin = new Utilisateur();
         $admin
@@ -33,14 +34,14 @@ class AppFixtures extends Fixture
             ->setCp($this->faker->postcode())
             ->setVille($this->faker->city())
             ->setDatenais($this->faker->dateTime())
-            ->setRoles(["ROLE_ADMIN"]);
-        $password = $this->userPasswordHasher->hashPassword($admin,"test");
+            ->setRoles(['ROLE_ADMIN']);
+        $password = $this->userPasswordHasher->hashPassword($admin, 'test');
         $admin->setPassword($password);
 
         $users[] = $admin;
         $manager->persist($admin);
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $domain = $this->faker->domainName;
             $user = new Utilisateur();
             $user->setNom($this->faker->lastName())
@@ -51,12 +52,20 @@ class AppFixtures extends Fixture
                 ->setEmail($user->getNom().$user->getPrenom().'@'.$domain)
                 ->setTelephone($this->faker->unique()->phoneNumber())
                 ->setRoles(['ROLE_USER']);
-            $password = $this->userPasswordHasher->hashPassword($user,"test");
+            $password = $this->userPasswordHasher->hashPassword($user, 'test');
             $user->setPassword($password);
             $users[] = $user;
             $manager->persist($user);
         }
-        $manager->flush();
 
+        // Fiche Partenaire
+        for ($i = 0; $i < 10; ++$i) {
+            $fiche = new FichePartenaire();
+            $fiche->setNom($this->faker->name())
+                ->setDescription($this->faker->sentence(50));
+            $manager->persist($fiche);
+        }
+
+        $manager->flush();
     }
 }

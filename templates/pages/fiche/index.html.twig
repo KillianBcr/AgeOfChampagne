@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AOC - Partenaire - Ma fiche
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+            <h1>Mes Fiches</h1>
+
+
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Numéro</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Date de création</th>
+                    <th scope="col">Edition</th>
+                    <th scope="col">Suppresion</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for fiche in fiches %}
+                    <tr class="table-primary">
+                        <th scope="row">{{ fiche.id }}</th>
+                        <td>{{ fiche.nom }}</td>
+
+                        <td>{{ fiche.createdAt|date('d/m/Y') }}</td>
+                        <td>
+                            TODO
+                        </td>
+                        <td>
+                            TODO
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+
+    </div>
+{% endblock %}
