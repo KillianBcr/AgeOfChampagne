@@ -9,17 +9,6 @@
         background-color: #0e0e11;
         margin:0;
     }
-    .title{
-        display: flex;
-        flex:1;
-        background-color: #07080a;
-        justify-content: center;
-        color:#f2f4f3;
-        padding-top: 10px;
-        font-size: 25px;
-        font-weight: bold;
-        padding-left: 100px;
-    }
     .corps{
         background-color: #141418;
     }
@@ -52,12 +41,12 @@
         flex-direction: column;
     }
     .image2nd{
-        transition: .3s ease-in-out;
+        transition: .1s ease-in-out;
         animation: img 3s ;
     }
     .image2nd-2{
         animation: img 3s ;
-        transition: .3s ease-in-out;
+        transition: .1s ease-in-out;
     }
     .image2nd-2:hover{
         filter: invert(35%);
@@ -83,7 +72,7 @@
     }
     #rules {
         position:absolute;
-        top:330px;
+        top:340px;
         left:47%;
         transition: .3s ease-in-out;
         height: 55px;
@@ -166,10 +155,20 @@
                     left: 13%;
                 }
             }
+    #admin{
+        position:absolute;
+        height: 55px;
+        top:80px;
+        left:5%;
+        transition: .1s ease-in-out;
+    }
+    #admin:hover{
+        height: 58px;
+    }
     
 @media only screen and (max-width: 1110px) {
     #map{
-        height: 200;
+        height: 200px;
     }
     .text{
         margin-top: 30px;
@@ -189,6 +188,7 @@
         left:82%;
     }
 }
+
 @media only screen and (max-width: 900px) {
     .corps{
         margin-right: 80px;
@@ -263,6 +263,9 @@
                     left: 82%;
                 }
             }
+    .text {
+        font-size: 15px;
+    }
 }
 @media only screen and (min-width: 900px){
     .corps{
@@ -298,6 +301,9 @@
 <body>
     <div class="corps">
         <nav class="contentAcceuil">
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="?"><img id="admin" src="img/admin.png" alt="gestion admin"> </a>
+        {% endif %}
             <nav class="column">
                 <a href="{{path('app_qrcode')}}"><img class="image2nd" src="img/qrReader.png" alt="qrcode logo"></a>
                 <a href="?"><img class="image2nd-2" src="img/card.png" alt="card logo"></a>
