@@ -35,10 +35,10 @@
 
                         <td>{{ fiche.createdAt|date('d/m/Y') }}</td>
                         <td>
-                            TODO
+                            <a href="{{ path('app_fiche_edit', { id: fiche.id }) }}" class="btn btn-info">Modifier</a>
                         </td>
                         <td>
-                            TODO
+                            <a href="{{ path('app_fiche_delete', { id: fiche.id }) }}" class="btn btn-warning">Supprimer</a>
                         </td>
                     </tr>
                 {% endfor %}
