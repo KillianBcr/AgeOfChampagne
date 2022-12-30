@@ -15,8 +15,9 @@
 .navbar-toggler-icon{
     filter: invert(100%);
 }
-.title{
+.title1{
     font-size:28px;
+    color:#f2f4f3;
     text-decoration:none;
     font-family: serif;
     font-weight:bold;
@@ -24,21 +25,18 @@
 .navbar-brand{
     font-size:18px;
 }
-    #admin{
-        height: 55px;
-        top:80px;
-        left:5%;
-        transition: .1s ease-in-out;
-    }
-    #admin:hover{
-        height: 58px;
-    }
+@media only screen and (max-width: 991px) {
+.title1{
+    font-size:28px;
+}
+}
+
 </style>
 
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" style="color:#f2f4f3;" href="/">Acceuil</a>
-        <a class="title" style="color:#f2f4f3;" href="/">Age of Champagne</a>
+        <a class="title1" style="color:#f2f4f3;" href="/">Age of Champagne</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,9 +46,6 @@
 
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a class="nav-link" href="{{ path('app_partenaire') }}">Partenaires</a>
-                {% endif %}
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="?"><img id="admin" src="img/admin.png" alt="gestion admin"> </a>
                 {% endif %}
             </div>
             <div class="d-flex">
