@@ -50,4 +50,29 @@ class FicheController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    // Edition de la fiche partenaire
+    #[Route('/partenaire/fiche/edition/{id}', 'app_fiche_edit', methods: ['GET', 'POST'])]
+    public function edit(FichePartenaire $fiche, Request $request, EntityManagerInterface $manager): Response
+    {
+        $form = $this->createForm(FichePartenaireType::class, $fiche);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $fiche = $form->getData();
+            $fiche->setUpdatedAt(new \DateTimeImmutable());
+            $manager->persist($fiche);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre fiche a été modifié avec succès !'
+            );
+
+            return $this->redirectToRoute('app_fiche');
+        }
+
+        return $this->render('pages/fiche/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
