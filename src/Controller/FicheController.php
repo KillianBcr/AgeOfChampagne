@@ -75,4 +75,18 @@ class FicheController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    //Suppression
+    #[Route('/partenaire/suppression/{id}', 'app_fiche_delete', methods: ['GET'])]
+    public function delete(EntityManagerInterface $manager, FichePartenaire $fiche): Response
+    {
+        $manager->remove($fiche);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            'Votre fiche a été supprimé avec succès !'
+        );
+
+        return $this->redirectToRoute('app_fiche');
+    }
 }
