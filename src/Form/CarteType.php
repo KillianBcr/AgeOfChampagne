@@ -12,6 +12,8 @@ class CarteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('name')
+            ->add('description')
             ->add('qrCode')
             ->add('imageCarte')
             ->add('Envoyer', SubmitType::class)
