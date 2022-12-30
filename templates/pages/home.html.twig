@@ -20,7 +20,7 @@
     }
     .image
     {
-        height: 50px;
+        height: 40px;
         padding-right: 15px;
         padding-left: 15px;
         transition: .3s ease-in-out;
@@ -69,17 +69,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-    }
-    #rules {
-        position:absolute;
-        top:340px;
-        left:47%;
-        transition: .3s ease-in-out;
-        height: 55px;
-        animation: img 3s ;
-            }
-    #rules:hover{
-        height: 58px;
     }
 
     #jeu {
@@ -155,16 +144,6 @@
                     left: 13%;
                 }
             }
-    #admin{
-        position:absolute;
-        height: 55px;
-        top:80px;
-        left:5%;
-        transition: .1s ease-in-out;
-    }
-    #admin:hover{
-        height: 58px;
-    }
     
 @media only screen and (max-width: 1110px) {
     #map{
@@ -232,14 +211,6 @@
                     left: 87%;
                 }
             }
-            #rules {
-        top:300px;
-        left:45%;
-        height: 45px;
-            }
-    #rules:hover{
-        height: 47px;
-    }
     #deco{
         display:none;
     }
@@ -266,6 +237,9 @@
     .text {
         font-size: 15px;
     }
+    .image{
+        height:30px;
+    }
 }
 @media only screen and (min-width: 900px){
     .corps{
@@ -275,7 +249,7 @@
     .image2nd{
         width: 100px;
         height: 100px;
-        transition: .3s ease-in-out;
+        transition: .1s ease-in-out;
         animation: img 3s ;
     }
     .image2nd-2{
@@ -283,7 +257,7 @@
         height: 100px;
         margin-top: 70px;
         animation: img 3s ;
-        transition: .3s ease-in-out;
+        transition: .1s ease-in-out;
     }
     .logo{
         width: 160px;
@@ -301,9 +275,6 @@
 <body>
     <div class="corps">
         <nav class="contentAcceuil">
-        {% if is_granted('ROLE_ADMIN') %}
-        <a href="?"><img id="admin" src="img/admin.png" alt="gestion admin"> </a>
-        {% endif %}
             <nav class="column">
                 <a href="{{path('app_qrcode')}}"><img class="image2nd" src="img/qrReader.png" alt="qrcode logo"></a>
                 <a href="?"><img class="image2nd-2" src="img/card.png" alt="card logo"></a>
@@ -316,7 +287,6 @@
                 <a href="?"><img class="image2nd-2" src="img/info.png" alt="info logo"></a>
             </nav>
         </nav>
-        <a href="https://www.ageofchampagne.fr/1-acquisitiondevignoble"><img id="rules" src="img/rules.png" alt="rules logo"></a>
         <a href="https://www.ageofchampagne.fr/"><img id="jeu" src="img/jeu.png" alt="jeu image"></a>
         <div class="content2nd">
             <nav class="text">Information +</nav>
