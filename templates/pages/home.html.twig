@@ -26,7 +26,7 @@
         transition: .3s ease-in-out;
     }
     .image:hover {
-        height: 52px;
+        height: 42px;
     }
     .contentAcceuil{
         padding: 25px;
@@ -70,11 +70,7 @@
         flex-direction: column;
         justify-content: center;
     }
-
-    #jeu {
-        position:absolute;
-        top:100px;
-        left:85%;
+#jeu {
         -webkit-transition: all 0.5s ease;
         transition: all 0.5s ease;
         animation: mvt2 3s ;
@@ -96,6 +92,12 @@
             }
     .content2nd {
         display: flex;
+    }
+    #txt{
+        font-size:17px;
+        font-weight:bold;
+        font-family: serif;
+        text-align:center;
     }
     .text {
         display: flex;
@@ -163,9 +165,6 @@
                     left: 82%;
                 }
     }
-    #jeu{
-        left:82%;
-    }
 }
 
 @media only screen and (max-width: 900px) {
@@ -199,18 +198,6 @@
         width: 125px;
         height: 87px;
     }
-    #jeu{
-        height: 75px;
-        left:87%;
-    }
-            @keyframes mvt2{
-                0% {
-                    left:95%;
-                }
-                100%{
-                    left: 87%;
-                }
-            }
     #deco{
         display:none;
     }
@@ -222,18 +209,6 @@
     #map{
         display: none;
     }
-    #jeu{
-        height: 75px;
-        left:82%;
-    }
-            @keyframes mvt2{
-                0% {
-                    left:95%;
-                }
-                100%{
-                    left: 82%;
-                }
-            }
     .text {
         font-size: 15px;
     }
@@ -287,9 +262,13 @@
                 <a href="?"><img class="image2nd-2" src="img/info.png" alt="info logo"></a>
             </nav>
         </nav>
-        <a href="https://www.ageofchampagne.fr/"><img id="jeu" src="img/jeu.png" alt="jeu image"></a>
         <div class="content2nd">
-            <nav class="text">Information +</nav>
+            <nav class="text">
+            <p id="txt">Vous voulez jouer ?<br>
+            <a href="https://www.ageofchampagne.fr/"><img id="jeu" src="img/jeu.png" alt="jeu image"></a>
+            <br>
+            Procurez vous le jeu en cliqnant sur la boite ci dessus !</p>
+            </nav>
             <nav id="flexmap">
                 <img id="map" src="img/map.png" alt="map AOC">
             </nav>
