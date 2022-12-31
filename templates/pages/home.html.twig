@@ -36,9 +36,7 @@
             </nav>
         </div>
     </div>
-    <nav class="foot">
-        <a href="https://www.facebook.com/AgeofChampagne/"><img class="image" src="img/facebook.png" alt="Discord" ></a>
-        <a href="https://www.linkedin.com/company/74071514/"><img class="image" src="img/in.png" alt="LinkedIn"></a>
-        <a href="https://linktr.ee/ageofchampagne"><img  class="image" src="img/autre.png" alt="Instagram"></a>
-    </nav>
+    {% block footer %}
+        {% include "partials/_footer.html.twig" %}
+    {% endblock %}
 {% endblock %}
