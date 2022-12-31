@@ -1,9 +1,11 @@
     body{
-        background-color: #0e0e11;
+        background-image: url('img/AOC.png');
+        background-repeat: no-repeat;
+        background-size: cover;
         margin:0;
     }
     .corps{
-        background-color: #141418;
+        background-color: none;
     }
     .foot{
         background-color: #07080a;
@@ -25,9 +27,7 @@
         padding: 25px;
         display: flex;
         justify-content: space-around;
-        background-image: url('img/bg2.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
+
     }
     .column{
         display: flex;
@@ -35,17 +35,17 @@
     }
     .image2nd{
         transition: .1s ease-in-out;
-        animation: img 3s ;
+        animation: img 0.5s ;
     }
     .image2nd-2{
-        animation: img 3s ;
+        animation: img 0.5s ;
         transition: .1s ease-in-out;
     }
     .image2nd-2:hover{
-        filter: invert(35%);
+        filter: invert(20%);
     }
     .image2nd:hover{
-        filter: invert(35%);
+        filter: invert(20%);
     }
     .logo{
        animation: img 3s ;
@@ -85,6 +85,7 @@
             }
     .content2nd {
         display: flex;
+        opacity:90%;
     }
     #txt{
         font-size:17px;
@@ -105,61 +106,12 @@
         justify-content: center;
         padding-top: 15px;
     }
-
-    #map {
-        display: flex;
-        height: 300px;
-        border-radius: 15px;
-        margin: 20px;
-        -webkit-filter: grayscale(100%);
-        filter: grayscale(100%);
-        -webkit-transition: .3s ease-in-out;
-        transition: .3s ease-in-out;
-    }
-    #map:hover{
-        -webkit-filter: grayscale(0);
-        filter: grayscale(0);
-    }
-
-    #deco {
-        position:absolute;
-        top:400px;
-        left:13%;
-        animation: mvt3 3s ;
-        transition: .3s ease-in-out;
-        height: 75px;
-            }      
-            @keyframes mvt3{
-                0% {
-                    left:0%;
-                    top: 300px;
-                }
-                100%{
-                    top:400;
-                    left: 13%;
-                }
-            }
     
 @media only screen and (max-width: 1110px) {
-    #map{
-        height: 200px;
-    }
     .text{
         margin-top: 30px;
-    }
-    #deco{
-        display:none;
-    }
-    @keyframes mvt2{
-                0% {
-                    left:95%;
-                }
-                100%{
-                    left: 82%;
-                }
-    }
 }
-
+}
 @media only screen and (max-width: 900px) {
     .corps{
         margin-right: 80px;
@@ -191,22 +143,34 @@
         width: 125px;
         height: 87px;
     }
-    #deco{
-        display:none;
-    }
-    #map{
-        height: 400;
-    }
 }
 @media only screen and (max-width: 775px){
-    #map{
-        display: none;
-    }
     .text {
         font-size: 15px;
     }
     .image{
         height:30px;
+    }
+    .image2nd{
+        width: 50px;
+        height: 50px;
+
+    }
+    .image2nd-2{
+        width: 50px;
+        height: 50px;
+    }
+    .logo{
+        width: 80px;
+        height: 52px;
+    }
+    .content2nd{
+        align-content: center;
+        flex:1;
+    }
+    .corps{
+        margin-right: 30px;
+        margin-left: 30px;
     }
 }
 @media only screen and (min-width: 900px){
