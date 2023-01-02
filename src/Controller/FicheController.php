@@ -28,8 +28,19 @@ class FicheController extends AbstractController
         ]);
     }
 
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[Route('/partenaires', name: 'app_fiche_public', methods: ['GET'])]
+    public function indexPublic(FichePartenaireRepository $repository, Request $request): Response
+    {
+        $fiches = $repository->findPublicFiche(null);
+        return $this->render('pages/fiche/index.public.html.twig', [
+            'fiches' => $fiches,
+        ]);
+    }
+
+
     #[Security("is_granted('ROLE_USER') and fiche.getIsPublic() === true")]
-    #[Route('/partenaire/fiche/{id}', name: 'app_fiche_show', methods: ['GET'])]
+    #[Route('/partenaires/fiche/{id}', name: 'app_fiche_show', methods: ['GET'])]
     public function show(FichePartenaire $fiche): Response
     {
         return $this->render('pages/fiche/show.html.twig', [
