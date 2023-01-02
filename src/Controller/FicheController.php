@@ -17,7 +17,7 @@ class FicheController extends AbstractController
     public function index(FichePartenaireRepository $repository, Request $request): Response
     {
         $fiches =
-            $repository->findAll()
+            $repository->findBy(['utilisateur' => $this->getUser()])
         ;
 
         return $this->render('pages/fiche/index.html.twig', [
@@ -34,13 +34,14 @@ class FicheController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $fiche = $form->getData();
+            $fiche->setUtilisateur($this->getUser());
 
             $manager->persist($fiche);
             $manager->flush();
 
             $this->addFlash(
                 'success',
-                'Votre fiche a été créé avec succès !'
+                'Votre fiAche a été créé avec succès !'
             );
 
             return $this->redirectToRoute('app_fiche');
