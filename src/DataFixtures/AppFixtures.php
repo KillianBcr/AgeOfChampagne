@@ -80,7 +80,8 @@ class AppFixtures extends Fixture
             $fiche = new FichePartenaire();
             $fiche->setNom($this->faker->name())
                 ->setDescription($this->faker->sentence(50))
-                ->setUtilisateur($users[mt_rand(0, count($users) - 1)]);
+                ->setUtilisateur($users[mt_rand(0, count($users) - 1)])
+                ->setIsPublic(mt_rand(0, 1) == 1 ? true : false);
             $manager->persist($fiche);
         }
 
