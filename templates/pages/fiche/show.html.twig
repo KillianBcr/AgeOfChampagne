@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    AOC - {{ fiche.nom }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h1 class="mt-4">{{ fiche.nom }}</h1>
+
+        <div>
+			<span class="badge bg-primary">Créée le
+				{{ fiche.createdAt|date('d/m/Y') }}</span>
+        </div>
+
+
+        <div class="mt-4">
+            {{ fiche.description|raw }}
+        </div>
+
+    </div>
+{% endblock %}

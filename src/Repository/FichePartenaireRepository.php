@@ -39,6 +39,21 @@ class FichePartenaireRepository extends ServiceEntityRepository
         }
     }
 
+    public function findPublicFiche(?int $nbFiches): array
+    {
+        sleep(3);
+        $queryBuilder = $this->createQueryBuilder('f')
+            ->where('f.isPublic = 1')
+            ->orderBy('f.createdAt', 'DESC');
+
+        if (0 !== $nbFiches || null !== $nbFiches) {
+            $queryBuilder->setMaxResults($nbFiches);
+        }
+
+        return $queryBuilder->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return FichePartenaire[] Returns an array of FichePartenaire objects
 //     */

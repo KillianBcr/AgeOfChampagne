@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\FichePartenaire;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -11,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class FichePartenaireType extends AbstractType
 {
@@ -50,6 +52,20 @@ class FichePartenaireType extends AbstractType
                     'class' => 'btn btn-primary mt-4',
                 ],
                 'label' => 'Créer une fiche',
+            ])
+
+            ->add('isPublic', CheckboxType::class, [
+                'attr' => [
+                    'class' => 'form-check-input',
+                ],
+                'required' => false,
+                'label' => 'Publier la fiche ? ',
+                'label_attr' => [
+                    'class' => 'form-check-label',
+                ],
+                'constraints' => [
+                    new NotNull(),
+                ],
             ])
 
         ;

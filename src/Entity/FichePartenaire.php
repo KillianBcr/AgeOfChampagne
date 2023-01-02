@@ -38,6 +38,9 @@ class FichePartenaire
     #[ORM\JoinColumn(nullable: false)]
     private ?Utilisateur $utilisateur = null;
 
+    #[ORM\Column]
+    private ?bool $isPublic = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -112,6 +115,18 @@ class FichePartenaire
     public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getIsPublic(): ?bool
+    {
+        return $this->isPublic;
+    }
+
+    public function setIsPublic(bool $isPublic): self
+    {
+        $this->isPublic = $isPublic;
 
         return $this;
     }

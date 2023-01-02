@@ -28,6 +28,26 @@ class FicheController extends AbstractController
         ]);
     }
 
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[Route('/partenaires', name: 'app_fiche_public', methods: ['GET'])]
+    public function indexPublic(FichePartenaireRepository $repository, Request $request): Response
+    {
+        $fiches = $repository->findPublicFiche(null);
+        return $this->render('pages/fiche/index.public.html.twig', [
+            'fiches' => $fiches,
+        ]);
+    }
+
+
+    #[Security("is_granted('ROLE_USER') and fiche.getIsPublic() === true")]
+    #[Route('/partenaires/fiche/{id}', name: 'app_fiche_show', methods: ['GET'])]
+    public function show(FichePartenaire $fiche): Response
+    {
+        return $this->render('pages/fiche/show.html.twig', [
+            'fiche' => $fiche,
+        ]);
+    }
+
     #[IsGranted('ROLE_PARTENAIRE')]
     #[Route('/partenaire/fiche/creation', name: 'app_fiche_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $manager): Response
@@ -45,7 +65,7 @@ class FicheController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Votre fiAche a été créé avec succès !'
+                'Votre fiche a été créé avec succès !'
             );
 
             return $this->redirectToRoute('app_fiche');
@@ -56,7 +76,7 @@ class FicheController extends AbstractController
         ]);
     }
     // Edition de la fiche partenaire
-    #[Security("is_granted('ROLE_PARTENAIRE') and utilisateur === app.getUser()")]
+    #[Security("is_granted('ROLE_PARTENAIRE') and user === fiche.getUtilisateur()")]
     #[Route('/partenaire/fiche/edition/{id}', 'app_fiche_edit', methods: ['GET', 'POST'])]
     public function edit(FichePartenaire $fiche, Request $request, EntityManagerInterface $manager): Response
     {
@@ -82,7 +102,7 @@ class FicheController extends AbstractController
         ]);
     }
     //Suppression
-    #[Security("is_granted('ROLE_PARTENAIRE') and utilisateur === app.getUser()")]
+    #[Security("is_granted('ROLE_PARTENAIRE') and user === fiche.getUtilisateur()")]
     #[Route('/partenaire/suppression/{id}', 'app_fiche_delete', methods: ['GET'])]
     public function delete(EntityManagerInterface $manager, FichePartenaire $fiche): Response
     {

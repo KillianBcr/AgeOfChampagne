@@ -26,6 +26,11 @@
             </div>
         </div>
 
+        <div class="form-check mt-4">
+            {{ form_widget(form.isPublic) }}
+            {{ form_label(form.isPublic) }}
+        </div>
+
         {{ form_end(form) }}
     </div>
 {% endblock %}
