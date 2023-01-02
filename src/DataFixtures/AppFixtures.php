@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
             ->setCp($this->faker->postcode())
             ->setVille($this->faker->city())
             ->setDatenais($this->faker->dateTime())
-            ->setRoles(['ROLE_ADMIN']);
+            ->setRoles(['ROLE_ADMIN','ROLE_PARTENAIRE']);
         $password = $this->userPasswordHasher->hashPassword($admin, 'test');
         $admin->setPassword($password);
 
