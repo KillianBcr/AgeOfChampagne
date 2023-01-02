@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -57,11 +59,15 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $datenais = null;
 
+    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: FichePartenaire::class, orphanRemoval: true)]
+    private Collection $fichePartenaire;
+
 
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
         $this->update_at = new \DateTimeImmutable();
+        $this->fichePartenaire = new ArrayCollection();
 ;
     }
 
@@ -258,6 +264,36 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDatenais(\DateTimeInterface $datenais): self
     {
         $this->datenais = $datenais;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FichePartenaire>
+     */
+    public function getFichePartenaire(): Collection
+    {
+        return $this->fichePartenaire;
+    }
+
+    public function addFichePartenaire(FichePartenaire $fichePartenaire): self
+    {
+        if (!$this->fichePartenaire->contains($fichePartenaire)) {
+            $this->fichePartenaire->add($fichePartenaire);
+            $fichePartenaire->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFichePartenaire(FichePartenaire $fichePartenaire): self
+    {
+        if ($this->fichePartenaire->removeElement($fichePartenaire)) {
+            // set the owning side to null (unless already changed)
+            if ($fichePartenaire->getUtilisateur() === $this) {
+                $fichePartenaire->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }
