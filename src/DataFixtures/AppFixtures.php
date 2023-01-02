@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        // Utilisateurs + Admin
+        // Utilisateurs + Admin + Partenaires + Fiche
         $users = [];
         $admin = new Utilisateur();
         $admin
@@ -56,6 +56,23 @@ class AppFixtures extends Fixture
             $user->setPassword($password);
             $users[] = $user;
             $manager->persist($user);
+        }
+
+        for ($i = 0; $i < 5; ++$i) {
+            $domain = $this->faker->domainName;
+            $partenaire = new Utilisateur();
+            $partenaire->setNom($this->faker->lastName())
+                ->setPrenom($this->faker->firstName())
+                ->setCp($this->faker->postcode())
+                ->setVille($this->faker->city())
+                ->setDatenais($this->faker->dateTime())
+                ->setEmail($user->getNom().$user->getPrenom().'@'.$domain)
+                ->setTelephone($this->faker->unique()->phoneNumber())
+                ->setRoles(['ROLE_PARTENAIRE']);
+            $password = $this->userPasswordHasher->hashPassword($user, 'test');
+            $partenaire->setPassword($password);
+            $users[] = $partenaire;
+            $manager->persist($partenaire);
         }
 
         // Fiche Partenaire
