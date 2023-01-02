@@ -28,6 +28,7 @@ class FicheController extends AbstractController
         ]);
     }
 
+    #[Security("is_granted('ROLE_USER') and fiche.getIsPublic() === true")]
     #[Route('/partenaire/fiche/{id}', name: 'app_fiche_show', methods: ['GET'])]
     public function show(FichePartenaire $fiche): Response
     {
