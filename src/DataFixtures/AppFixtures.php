@@ -62,7 +62,8 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 10; ++$i) {
             $fiche = new FichePartenaire();
             $fiche->setNom($this->faker->name())
-                ->setDescription($this->faker->sentence(50));
+                ->setDescription($this->faker->sentence(50))
+                ->setUtilisateur($users[mt_rand(0, count($users) - 1)]);
             $manager->persist($fiche);
         }
 
