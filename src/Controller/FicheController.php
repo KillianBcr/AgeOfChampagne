@@ -65,7 +65,7 @@ class FicheController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Votre fiAche a été créé avec succès !'
+                'Votre fiche a été créé avec succès !'
             );
 
             return $this->redirectToRoute('app_fiche');
