@@ -28,6 +28,14 @@ class FicheController extends AbstractController
         ]);
     }
 
+    #[Route('/partenaire/fiche/{id}', name: 'app_fiche_show', methods: ['GET'])]
+    public function show(FichePartenaire $fiche): Response
+    {
+        return $this->render('pages/fiche/show.html.twig', [
+            'fiche' => $fiche,
+        ]);
+    }
+
     #[IsGranted('ROLE_PARTENAIRE')]
     #[Route('/partenaire/fiche/creation', name: 'app_fiche_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $manager): Response
