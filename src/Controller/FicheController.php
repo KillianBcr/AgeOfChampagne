@@ -76,7 +76,7 @@ class FicheController extends AbstractController
         ]);
     }
     // Edition de la fiche partenaire
-    #[Security("is_granted('ROLE_PARTENAIRE') and utilisateur === app.getUser()")]
+    #[Security("is_granted('ROLE_PARTENAIRE') and user === fiche.getUtilisateur()")]
     #[Route('/partenaire/fiche/edition/{id}', 'app_fiche_edit', methods: ['GET', 'POST'])]
     public function edit(FichePartenaire $fiche, Request $request, EntityManagerInterface $manager): Response
     {
@@ -102,7 +102,7 @@ class FicheController extends AbstractController
         ]);
     }
     //Suppression
-    #[Security("is_granted('ROLE_PARTENAIRE') and utilisateur === app.getUser()")]
+    #[Security("is_granted('ROLE_PARTENAIRE') and user === fiche.getUtilisateur()")]
     #[Route('/partenaire/suppression/{id}', 'app_fiche_delete', methods: ['GET'])]
     public function delete(EntityManagerInterface $manager, FichePartenaire $fiche): Response
     {
