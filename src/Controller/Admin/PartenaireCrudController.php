@@ -3,14 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Partenaire;
-use App\Entity\Utilisateur;
 use App\Repository\PartenaireRepository;
-use Cassandra\Blob;
-use Doctrine\DBAL\Types\BlobType;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -39,12 +34,11 @@ class PartenaireCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
-            TextField::new('email'),
+            EmailField::new('email')->hideOnForm(),
             TextField::new('telephone'),
             TextField::new('description'),
-            ImageField::new('image'),
-            DateTimeField::new('created_at'),
-            DateTimeField::new('update_at')->hideOnIndex(),
+            /**ImageField::new('image'),**/
+
             // caractéristiques du champs de mot de passe
             // TextField::new('password')
             // Uniquement visible dans le formulaire
@@ -56,7 +50,6 @@ class PartenaireCrudController extends AbstractCrudController
             // Autocompletion désactivé
             // Type de champs
             //    ->setFormType(PasswordType::class),
-            EmailField::new('email')->hideOnForm(),
         ];
     }
 
