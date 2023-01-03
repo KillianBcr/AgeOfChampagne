@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Carte;
 use App\Repository\CarteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,10 +14,22 @@ class CarteController extends AbstractController
     #[Route('/carte', name: 'app_carte')]
     public function index(CarteRepository $repository): Response
     {
-        $Cartes = $repository->findBy([], ['name' => 'ASC']);
+        $cartes = $repository->findBy([], ['name' => 'ASC']);
 
         return $this->render('carte/index.html.twig', [
-            'Cartes' => $Cartes,
+            'cartes' => $cartes,
         ]);
+    }
+
+    #[Route('/carte/{id}', name: 'app_carte_show',
+        requirements: [
+            'id' => "\d+",
+        ]
+    )]
+    public function show(Carte $carte): Response
+    {
+
+        return $this->render('carte/show.html.twig',
+            ['carte' => $carte]);
     }
 }

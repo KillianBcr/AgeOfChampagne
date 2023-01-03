@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ carte.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ carte.name }}</h1>
+    <dl>
+        <dt>Description</dt>
+        <dd>{{ carte.description }}</dd>
+
+    </dl>
+
+{% endblock %}

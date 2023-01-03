@@ -7,7 +7,7 @@
     <ul class="flex-container">
         {% for Carte in Cartes %}
             <div class="flex-items">
-                <li><a href ='{{ path('app_carte', {'id': Carte.id}) }}'>{{ Carte.qrcode() }}</li>
+                <li><a href ='{{ path('app_carte_show', {'id': Carte.id}) }}'>{{ Carte.qrcode() }}</li>
                 <li>{{ Carte.name }}</li>
                 <li>{{ Carte.description }}</li>
             </div>
