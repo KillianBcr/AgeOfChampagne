@@ -22,13 +22,10 @@ class Carte
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $name = null;
-
     #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: 'string', nullable: true)]
     private ?string $imageName = null;
 
     #[ORM\Column(type: 'datetime')]
@@ -86,6 +83,7 @@ class Carte
 
         return $this;
     }
+
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
@@ -109,5 +107,4 @@ class Carte
     {
         return $this->imageName;
     }
-
 }
