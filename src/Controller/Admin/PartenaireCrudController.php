@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Partenaire;
-use App\Entity\Vigneron;
 use App\Repository\PartenaireRepository;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PartenaireController extends AbstractController
+class PartenaireCrudController extends AbstractCrudController
 {
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     #[Route('/partenaire', name: 'app_partenaire')]
