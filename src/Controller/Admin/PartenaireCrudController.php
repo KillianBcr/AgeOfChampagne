@@ -34,7 +34,7 @@ class PartenaireCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
-            EmailField::new('email')->hideOnForm(),
+            EmailField::new('email'),
             TextField::new('telephone'),
             TextField::new('description'),
             /**ImageField::new('image'),**/
