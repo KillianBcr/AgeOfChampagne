@@ -16,10 +16,11 @@ class CarteController extends AbstractController
     {
         $cartes = $repository->findBy([], ['name' => 'ASC']);
 
-        return $this->render('carte/index.html.twig', [
+        return $this->render('pages/carte/index.html.twig', [
             'cartes' => $cartes,
         ]);
     }
+
 
     #[Route('/carte/{id}', name: 'app_carte_show',
         requirements: [
@@ -29,7 +30,7 @@ class CarteController extends AbstractController
     public function show(Carte $carte): Response
     {
 
-        return $this->render('carte/show.html.twig',
+        return $this->render('pages/carte/show.html.twig',
             ['carte' => $carte]);
     }
 }
