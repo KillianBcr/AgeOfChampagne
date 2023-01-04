@@ -8,8 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class CardFixtures extends Fixture
 {
-    public function load(ObjectManager $manager): array
+    public function load(ObjectManager $manager): void
     {
-        return CarteFactory::createMany(10);
     }
 }
