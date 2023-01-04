@@ -17,8 +17,10 @@ class CarteCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
+            IdField::new('id')->hideOnForm(),
+            TextField::new('qr_code'),
+            TextField::new('image_carte'),
+            TextField::new('name'),
             TextEditorField::new('description'),
         ];
     }
