@@ -33,11 +33,11 @@ class FicheController extends AbstractController
     public function indexPublic(FichePartenaireRepository $repository, Request $request): Response
     {
         $fiches = $repository->findPublicFiche(null);
+
         return $this->render('pages/fiche/index.public.html.twig', [
             'fiches' => $fiches,
         ]);
     }
-
 
     #[Security("is_granted('ROLE_USER') and fiche.getIsPublic() === true")]
     #[Route('/partenaires/fiche/{id}', name: 'app_fiche_show', methods: ['GET'])]
@@ -75,6 +75,7 @@ class FicheController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
     // Edition de la fiche partenaire
     #[Security("is_granted('ROLE_PARTENAIRE') and user === fiche.getUtilisateur()")]
     #[Route('/partenaire/fiche/edition/{id}', 'app_fiche_edit', methods: ['GET', 'POST'])]
@@ -101,7 +102,8 @@ class FicheController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    //Suppression
+
+    // Suppression
     #[Security("is_granted('ROLE_PARTENAIRE') and user === fiche.getUtilisateur()")]
     #[Route('/partenaire/suppression/{id}', 'app_fiche_delete', methods: ['GET'])]
     public function delete(EntityManagerInterface $manager, FichePartenaire $fiche): Response
