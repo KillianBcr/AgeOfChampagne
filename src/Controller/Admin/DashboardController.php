@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Carte;
 use App\Entity\Partenaire;
 use App\Entity\Utilisateur;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -28,6 +29,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', Utilisateur::class);
-        yield MenuItem::linkToCrud('Partenaire', 'fa fa-user', Partenaire::class);
+        yield MenuItem::linkToCrud('Partenaires', 'fa fa-user', Partenaire::class);
+        yield MenuItem::linkToCrud('Cartes', 'fa fa-th', Carte::class);
     }
 }
