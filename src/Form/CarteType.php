@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Carte;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,9 +20,11 @@ class CarteType extends AbstractType
             ->add('imageFile', VichImageType::class, [
                 'label' => 'Image de la recette',
                 'label_attr' => [
-                    'class' => 'form-label mt-4',
+                    'class' => 'form-label mt-4'
                 ],
+                'required' => false
             ])
+
             ->add('Envoyer', SubmitType::class)
         ;
     }
@@ -29,7 +32,7 @@ class CarteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            // Configure your form options here
+            'data_class' => Carte::class,
         ]);
     }
 }
