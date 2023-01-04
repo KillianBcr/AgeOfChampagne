@@ -5,8 +5,10 @@ namespace App\Controller\Admin;
 use App\Entity\Carte;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+
 class CarteCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -19,7 +21,7 @@ class CarteCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('qr_code'),
-            TextField::new('image_carte'),
+            ImageField::new('image_carte')->setUploadDir(''),
             TextField::new('name'),
             TextEditorField::new('description'),
         ];
