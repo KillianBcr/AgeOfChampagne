@@ -4,8 +4,11 @@ namespace App\Entity;
 
 use App\Repository\CarteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CarteRepository::class)]
+#[Vich\Uploadable]
 class Carte
 {
     #[ORM\Id]
@@ -16,14 +19,17 @@ class Carte
     #[ORM\Column(length: 40)]
     private ?string $qrCode = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $imageCarte = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $name = null;
+    #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(type: 'datetime')]
+    private ?\DateTimeInterface $updatedAt = null;
 
     public function getId(): ?int
     {
@@ -76,5 +82,29 @@ class Carte
         $this->name = $name;
 
         return $this;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 }
