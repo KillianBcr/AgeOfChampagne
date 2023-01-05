@@ -8,7 +8,7 @@
         background-color: none;
     }
     .foot{
-        background-color: #07080a;
+        background-color: #f2f4f3;
         text-align:center;
         padding-top: 10px;
         padding-bottom: 10px;
@@ -143,11 +143,20 @@
     .titleform {
         color:#f2f4f3;
         font-weight: bold;
+        text-align: center;
+        font-size: 20px;
     }
     .textform {
         color:#f2f4f3;
     }
-    
+    .footer{
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+        color:#0e0e11;
+        margin-top: 3px;
+    }
+
 @media only screen and (max-width: 1110px) {
     .text{
         margin-top: 30px;
@@ -237,3 +246,23 @@
         height: 105px;
     }
 }
+    @media only screen and (max-width: 1000px){
+        .formul{
+            margin-right: 50px;
+            margin-left: 50px;
+        }
+    }
+    @media only screen and (min-width: 1000px){
+        .formul{
+            margin-right: 100px;
+            margin-left: 100px;
+            margin-top:20px;
+        }
+    }
+    @media only screen and (min-width: 1500px){
+        .formul{
+            margin-right: 250px;
+            margin-left: 250px;
+            margin-top:50px;
+        }
+    }

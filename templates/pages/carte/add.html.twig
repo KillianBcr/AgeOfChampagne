@@ -5,7 +5,11 @@
 {% block body %}
     <link rel="stylesheet" href="style.css">
     <div class="formul">
-        <p class="titleform">Formulaire d'ajout de carte !</p>
+    <p class="titleform">Formulaire d'ajout de carte !</p>
         {{form(formulaire)}}
     </div>
+    {% block footer %}
+        {% include "partials/_footer.html.twig" %}
+    {% endblock %}
 {% endblock %}
+
