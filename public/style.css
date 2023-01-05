@@ -106,6 +106,47 @@
         justify-content: center;
         padding-top: 15px;
     }
+    .formEntry, select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .send {
+        width: 100%;
+        background-color: #f2f4f3;
+        color: #0e0e11;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: .1s ease-in-out;
+        font-weight: bold;
+    }
+
+    .send:hover {
+        background-color: darkgrey ;
+    }
+
+    .formul {
+        border-radius: 5px;
+        background-color:#0e0e11 ;
+        padding: 20px;
+        margin: 15px;
+        opacity:85%;
+    }
+    .titleform {
+        color:#f2f4f3;
+        font-weight: bold;
+    }
+    .textform {
+        color:#f2f4f3;
+    }
     
 @media only screen and (max-width: 1110px) {
     .text{
