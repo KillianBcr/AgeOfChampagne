@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Cartes{% endblock %}
+
+{% block body %}
+    <h1>Liste des Cartes</h1>
+    {{ dump(cartes) }}
+
+    <ul class="flex-container">
+        {% for carte in cartes %}
+            <div class="flex-items">
+                <li><img style="max-width: 100%;" src="{{ vich_uploader_asset(card, 'imageFile')  }}">{{ carte.name }}</li>
+                <li><a href ='{{ path('app_carte_show', {'id': carte.id}) }}'>{{ carte.qrcode() }}</li>
+                <li>{{ carte.name }}</li>
+                <li>{{ carte.description }}</li>
+            </div>
+        {% endfor %}
+    </ul>
+
+
+
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: normal;
+            align-items: normal;
+            align-content: normal;
+        }
+
+        .flex-items:nth-child(1) {
+            display: block;
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
+            align-self: auto;
+            order: 0;
+        }
+
+        .flex-items:nth-child(2) {
+            display: block;
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
+            align-self: auto;
+            order: 0;
+        }
+
+        .flex-items:nth-child(3) {
+            display: block;
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
+            align-self: auto;
+            order: 0;
+        }
+
+        .flex-items:nth-child(4) {
+            display: block;
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
+            align-self: auto;
+            order: 0;
+        }
+    </style>
+{% endblock %}
