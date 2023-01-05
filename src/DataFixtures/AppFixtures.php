@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
             ->setCp($this->faker->postcode())
             ->setVille($this->faker->city())
             ->setDatenais($this->faker->dateTime())
-            ->setRoles(['ROLE_ADMIN','ROLE_PARTENAIRE']);
+            ->setRoles(['ROLE_ADMIN']);
         $password = $this->userPasswordHasher->hashPassword($admin, 'test');
         $admin->setPassword($password);
 
@@ -58,6 +58,7 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
+
         for ($i = 0; $i < 5; ++$i) {
             $domain = $this->faker->domainName;
             $partenaire = new Utilisateur();
@@ -75,13 +76,14 @@ class AppFixtures extends Fixture
             $manager->persist($partenaire);
         }
 
+
         // Fiche Partenaire
         for ($i = 0; $i < 10; ++$i) {
             $fiche = new FichePartenaire();
             $fiche->setNom($this->faker->name())
                 ->setDescription($this->faker->sentence(50))
-                ->setUtilisateur($users[mt_rand(0, count($users) - 1)])
-                ->setIsPublic(mt_rand(0, 1) == 1 ? true : false);
+                ->setUtilisateur($admin)
+                ->setIsPublic(1 == mt_rand(0, 1) ? true : false);
             $manager->persist($fiche);
         }
 
