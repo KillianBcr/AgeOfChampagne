@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Carte;
 use App\Form\CarteType;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,17 +14,24 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CardFormController extends AbstractController
 {
-    #[Route('/cardform', name: 'app_card_form')]
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/cardform', name: 'app_card_form', methods: ['GET', 'POST'])]
     public function index(Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
     {
-        $form = $this->createForm(CarteType::class);
+        $carte = new Carte();
+        $form = $this->createForm(CarteType::class, $carte);
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $carte = new Carte();
-            $carte->setQrCode($form->get('qrCode')->getData());
-            $carte->setDescription($form->get('description')->getData());
+            $carte = $form->getData();
             $manager->persist($carte);
             $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Carte ajoutée !'
+            );
+
         }
 
         return $this->renderForm('pages/carte/add.html.twig', [

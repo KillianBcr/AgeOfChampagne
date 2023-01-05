@@ -20,9 +20,9 @@ class CarteType extends AbstractType
             ->add('imageFile', VichImageType::class, [
                 'label' => 'Image de la recette',
                 'label_attr' => [
-                    'class' => 'form-label mt-4'
+                    'class' => 'form-label mt-4',
                 ],
-                'required' => false
+                'required' => false,
             ])
 
             ->add('Envoyer', SubmitType::class)
