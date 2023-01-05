@@ -58,7 +58,7 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-
+/*
         for ($i = 0; $i < 5; ++$i) {
             $domain = $this->faker->domainName;
             $partenaire = new Utilisateur();
@@ -75,15 +75,16 @@ class AppFixtures extends Fixture
             $users[] = $partenaire;
             $manager->persist($partenaire);
         }
-
+*/
 
         // Fiche Partenaire
         for ($i = 0; $i < 10; ++$i) {
             $fiche = new FichePartenaire();
             $fiche->setNom($this->faker->name())
                 ->setDescription($this->faker->sentence(50))
-                ->setUtilisateur($admin)
-                ->setIsPublic(1 == mt_rand(0, 1) ? true : false);
+                ->setIsPublic(1 == mt_rand(0, 1))
+                ->setEmail($this->faker->email())
+                ->setTelephone($this->faker->phoneNumber());
             $manager->persist($fiche);
         }
 
