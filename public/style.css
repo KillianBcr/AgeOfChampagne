@@ -132,7 +132,9 @@
     .send:hover {
         background-color: darkgrey ;
     }
-
+    #carte_imageFile_file{
+        color:#f2f4f3;
+    }
     .formul {
         border-radius: 5px;
         background-color:#0e0e11 ;
