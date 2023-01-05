@@ -3,16 +3,22 @@
 {% block title %}Liste des Cartes{% endblock %}
 
 {% block body %}
-    <h1>Liste des Cartes</h1>
-    <ul class="flex-container">
+<link rel="stylesheet" href="style.css">
+    <h1 class="titleform" style="font-size:30px; padding-top:15px;">Liste des Cartes</h1>
+    <ul class="contentUl">
         {% for carte in cartes %}
             <div class="flex-items">
-                <li>
-                    <img style="max-width: 100%;" src="{{ vich_uploader_asset(carte, 'imageFile')  }}">{{ carte.name }}
-                    <a href ='{{ path('app_carte_show', {'id': carte.id}) }}'>
-                        {{ carte.qrcode() }}
-                    {{ carte.description }}
+                <a class="textform" style="text-decoration:none;" href ='{{ path('app_carte_show', {'id': carte.id}) }}'>
+                <li class="contentLi">
+                    <img style="width: 200px;height: 200px;" src="{{ vich_uploader_asset(carte, 'imageFile')  }}">
+                    <nav class="column" style="margin-left:20px; justify-content: space-around;">
+                    <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ carte.name }}</strong></p> 
+                    <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ carte.id }}</strong></p> 
+                    <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ carte.qrcode() }}</strong></p>     
+                    <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ carte.description }}</strong></p> 
+                    </nav>
                 </li>
+                </a>
             </div>
         {% endfor %}
     </ul>
