@@ -34,9 +34,8 @@ class Carte
     private ?string $imageName = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
-    #[Assert\NotNull()]
     private \DateTimeImmutable $updatedAt;
-    
+
 
     public function getName(): ?string
     {
