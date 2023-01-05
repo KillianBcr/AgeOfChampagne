@@ -38,16 +38,6 @@ class CarteRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
-    public function findAllAlphabeticOrder() : array
-    {
-        return $this->createQueryBuilder('c')
-            ->select('c.image_name')
-            ->orderBy('c.name')
-            ->getQuery()
-            ->execute();
-    }
-//    /**
 //     * @return Carte[] Returns an array of Carte objects
 //     */
 //    public function findByExampleField($value): array

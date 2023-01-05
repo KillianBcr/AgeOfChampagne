@@ -14,7 +14,7 @@ class CarteController extends AbstractController
     #[Route('/carte', name: 'app_carte')]
     public function index(CarteRepository $repository): Response
     {
-        $cartes = $repository->findAllAlphabeticOrder();
+        $cartes = $repository->findAll();
 
         return $this->render('pages/carte/index.html.twig', [
             'cartes' => $cartes,
