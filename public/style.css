@@ -106,6 +106,28 @@
         justify-content: center;
         padding-top: 15px;
     }
+    .contentUl {
+        display: flex;
+        background-color: #0e0e11;
+        border-radius: 15px;
+        flex:1;
+        margin: 30px;
+        font-size: 15px;
+        color: #f2f4f3;
+        justify-content: center;
+        padding-top: 15px;
+        flex-direction: column;
+        opacity: 90%;
+    }
+    .contentLi {
+        display: flex;
+        background-color: rgb(68, 65, 65);
+        opacity: 85%;
+        padding:20px;
+        border-radius: 15px;
+        flex:1;
+        margin: 20px;
+    }
     .formEntry, select {
         width: 100%;
         padding: 12px 20px;
@@ -197,6 +219,9 @@
     }
 }
 @media only screen and (max-width: 775px){
+    .contentLi{
+        flex-direction: column;
+    }
     .text {
         font-size: 15px;
     }
