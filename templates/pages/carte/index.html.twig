@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Cartes{% endblock %}
+
+{% block body %}
+    <h1>Liste des Cartes</h1>
+    <ul class="flex-container">
+        {% for carte in cartes %}
+            <div class="flex-items">
+                <li>
+                    <img style="max-width: 100%;" src="{{ vich_uploader_asset(carte, 'imageFile')  }}">{{ carte.name }}
+                    <a href ='{{ path('app_carte_show', {'id': carte.id}) }}'>
+                        {{ carte.qrcode() }}
+                    {{ carte.description }}
+                </li>
+            </div>
+        {% endfor %}
+    </ul>
+
+
+
+
+{% endblock %}

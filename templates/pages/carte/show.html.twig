@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ carte.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ carte.name }}</h1>
+    <dl>
+        <img style="max-width: 100%;" src="{{ vich_uploader_asset(carte, 'imageFile')  }}">
+        <dt>Description</dt>
+        <dd>{{ carte.description }}</dd>
+
+    </dl>
+
+{% endblock %}

@@ -38,8 +38,6 @@ class CarteRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
-//    /**
 //     * @return Carte[] Returns an array of Carte objects
 //     */
 //    public function findByExampleField($value): array
