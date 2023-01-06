@@ -16,12 +16,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class CarteController extends AbstractController
 {
     #[IsGranted('ROLE_USER')]
-    #[Route('/carte', name: 'app_carte')]
+    #[Route('/carte', name: 'app_carte_public')]
     public function index(CarteRepository $repository): Response
     {
         $cartes = $repository->findAll();
 
-        return $this->render('pages/carte/index.html.twig', [
+        return $this->render('pages/carte/index.public.html.twig', [
             'cartes' => $cartes,
         ]);
     }
