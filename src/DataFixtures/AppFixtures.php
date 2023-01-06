@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Carte;
 use App\Entity\FichePartenaire;
 use App\Entity\Utilisateur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -86,6 +87,16 @@ class AppFixtures extends Fixture
                 ->setEmail($this->faker->email())
                 ->setTelephone($this->faker->phoneNumber());
             $manager->persist($fiche);
+        }
+
+        // Carte
+
+        for ($i = 0; $i < 12; ++$i) {
+            $carte = new Carte();
+            $carte->setName($this->faker->name())
+                ->setQrCode("qrcode")
+                ->setDescription("description");
+            $manager->persist($carte);
         }
 
         $manager->flush();
