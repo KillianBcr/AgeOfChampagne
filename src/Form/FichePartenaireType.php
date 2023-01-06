@@ -47,6 +47,37 @@ class FichePartenaireType extends AbstractType
                     new NotBlank(),
                 ],
             ])
+
+            ->add('email', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '180',
+                ],
+                'label' => 'Email',
+                'label_attr' => [
+                    'class' => 'form-label  mt-4',
+                ],
+                'constraints' => [
+                    new Length(['min' => 2, 'max' => 180]),
+                ],
+            ])
+
+            ->add('telephone', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '30',
+                ],
+                'label' => 'Telephone',
+                'label_attr' => [
+                    'class' => 'form-label  mt-4',
+                ],
+                'constraints' => [
+                    new Length(['min' => 2, 'max' => 30]),
+                ],
+            ])
+
             ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-primary mt-4',
