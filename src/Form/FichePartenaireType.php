@@ -90,7 +90,7 @@ class FichePartenaireType extends AbstractType
                     'class' => 'form-check-input',
                 ],
                 'required' => false,
-                'label' => 'Publier la fiche ? ',
+                'label' => 'Publier',
                 'label_attr' => [
                     'class' => 'form-check-label',
                 ],
