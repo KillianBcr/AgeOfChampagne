@@ -65,4 +65,20 @@ class CarteController extends AbstractController
             'carte' => $form->createView(),
         ]);
     }
+
+    // Suppression
+    #[Security("is_granted('ROLE_ADMIN')")]
+    #[Route('/carte/suppression/{id}', 'app_carte_delete', methods: ['GET'])]
+    public function delete(EntityManagerInterface $manager, Carte $carte): Response
+    {
+        $manager->remove($carte);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            'Votre carte a été supprimé avec succès !'
+        );
+
+        return $this->redirectToRoute('app_carte');
+    }
 }
