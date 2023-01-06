@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FicheController extends AbstractController
 {
-    #[IsGranted('ROLE_PARTENAIRE')]
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/partenaire/fiche', name: 'app_fiche', methods: ['GET'])]
     public function index(FichePartenaireRepository $repository, Request $request): Response
     {
@@ -48,7 +48,7 @@ class FicheController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_PARTENAIRE')]
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/partenaire/fiche/creation', name: 'app_fiche_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
@@ -77,7 +77,7 @@ class FicheController extends AbstractController
     }
 
     // Edition de la fiche partenaire
-    #[Security("is_granted('ROLE_PARTENAIRE') and user === fiche.getUtilisateur()")]
+    #[Security("is_granted('ROLE_ADMIN') and user === fiche.getUtilisateur()")]
     #[Route('/partenaire/fiche/edition/{id}', 'app_fiche_edit', methods: ['GET', 'POST'])]
     public function edit(FichePartenaire $fiche, Request $request, EntityManagerInterface $manager): Response
     {
@@ -104,7 +104,7 @@ class FicheController extends AbstractController
     }
 
     // Suppression
-    #[Security("is_granted('ROLE_PARTENAIRE') and user === fiche.getUtilisateur()")]
+    #[Security("is_granted('ROLE_ADMIN') and user === fiche.getUtilisateur()")]
     #[Route('/partenaire/suppression/{id}', 'app_fiche_delete', methods: ['GET'])]
     public function delete(EntityManagerInterface $manager, FichePartenaire $fiche): Response
     {

@@ -33,13 +33,19 @@ class FichePartenaire
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     #[Assert\NotNull()]
     private ?\DateTimeImmutable $updatedAt = null;
-
+/*
     #[ORM\ManyToOne(inversedBy: 'fichePartenaire')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Utilisateur $utilisateur = null;
-
+*/
     #[ORM\Column]
     private ?bool $isPublic = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 30)]
+    private ?string $telephone = null;
 
     public function __construct()
     {
@@ -106,7 +112,7 @@ class FichePartenaire
 
         return $this;
     }
-
+    /*
     public function getUtilisateur(): ?Utilisateur
     {
         return $this->utilisateur;
@@ -118,7 +124,7 @@ class FichePartenaire
 
         return $this;
     }
-
+    */
     public function getIsPublic(): ?bool
     {
         return $this->isPublic;
@@ -127,6 +133,30 @@ class FichePartenaire
     public function setIsPublic(bool $isPublic): self
     {
         $this->isPublic = $isPublic;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): self
+    {
+        $this->telephone = $telephone;
 
         return $this;
     }
