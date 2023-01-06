@@ -22,7 +22,6 @@ class CarteController extends AbstractController
         ]);
     }
 
-
     #[IsGranted('ROLE_USER')]
     #[Route('/carte/{id}', name: 'app_carte_show',
         requirements: [
@@ -31,7 +30,6 @@ class CarteController extends AbstractController
     )]
     public function show(Carte $carte): Response
     {
-
         return $this->render('pages/carte/show.html.twig',
             ['carte' => $carte]);
     }

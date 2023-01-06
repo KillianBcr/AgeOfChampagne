@@ -13,6 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class FichePartenaireType extends AbstractType
 {
@@ -76,6 +77,14 @@ class FichePartenaireType extends AbstractType
                 'constraints' => [
                     new Length(['min' => 2, 'max' => 30]),
                 ],
+            ])
+
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image de la carte',
+                'label_attr' => [
+                    'class' => 'textform',
+                ],
+                'required' => false,
             ])
 
             ->add('submit', SubmitType::class, [

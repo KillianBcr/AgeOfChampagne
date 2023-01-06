@@ -5,8 +5,10 @@
 {% block body %}
     <h1>{{ partenaire.nom }}</h1>
     <dl>
-        <dt>Description</dt>
+
+            <dt>Description</dt>
         <dd>{{ partenaire.description }}</dd>
+        <center><img style="width: 200px;height: 200px;" src="{{ vich_uploader_asset(partenaire, 'imageFile')  }}">
 
         <dt>Contact</dt>
         <dd>Email : {{ partenaire.email }} </dd>

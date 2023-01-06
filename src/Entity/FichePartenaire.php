@@ -6,8 +6,12 @@ use App\Repository\FichePartenaireRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+
+#[Vich\Uploadable]
 #[UniqueEntity(fields: ['nom'], message: 'This name is already exist')]
 #[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: FichePartenaireRepository::class)]
@@ -33,11 +37,11 @@ class FichePartenaire
     #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     #[Assert\NotNull()]
     private ?\DateTimeImmutable $updatedAt = null;
-/*
-    #[ORM\ManyToOne(inversedBy: 'fichePartenaire')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Utilisateur $utilisateur = null;
-*/
+    /*
+        #[ORM\ManyToOne(inversedBy: 'fichePartenaire')]
+        #[ORM\JoinColumn(nullable: false)]
+        private ?Utilisateur $utilisateur = null;
+    */
     #[ORM\Column]
     private ?bool $isPublic = null;
 
@@ -47,18 +51,24 @@ class FichePartenaire
     #[ORM\Column(length: 30)]
     private ?string $telephone = null;
 
+    #[Vich\UploadableField(mapping: 'card', fileNameProperty: 'imageName')]
+    private $imageFile = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageName = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
     }
 
+
     #[ORM\PrePersist()]
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTimeImmutable();
     }
-
 
     public function getId(): ?int
     {
@@ -112,6 +122,7 @@ class FichePartenaire
 
         return $this;
     }
+
     /*
     public function getUtilisateur(): ?Utilisateur
     {
@@ -157,6 +168,32 @@ class FichePartenaire
     public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): self
+    {
+        $this->imageName = $imageName;
 
         return $this;
     }
