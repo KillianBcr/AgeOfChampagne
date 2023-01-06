@@ -31,7 +31,7 @@ class CardFormController extends AbstractController
                 'success',
                 'Carte ajoutée !'
             );
-            return $this->redirectToRoute('app_card_form');
+            return $this->redirectToRoute('app_carte');
 
         }
 

@@ -5,6 +5,11 @@
 {% block body %}
 <link rel="stylesheet" href="style.css">
     <h1 class="titleform" style="font-size:30px; padding-top:15px;">Liste des Cartes</h1>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
     <ul class="contentUl">
         {% for carte in cartes %}
             <div class="flex-items">
