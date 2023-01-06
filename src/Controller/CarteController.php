@@ -4,13 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Carte;
 use App\Repository\CarteRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CarteController extends AbstractController
 {
-
+    #[IsGranted('ROLE_USER')]
     #[Route('/carte', name: 'app_carte')]
     public function index(CarteRepository $repository): Response
     {
@@ -22,6 +23,7 @@ class CarteController extends AbstractController
     }
 
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/carte/{id}', name: 'app_carte_show',
         requirements: [
             'id' => "\d+",
