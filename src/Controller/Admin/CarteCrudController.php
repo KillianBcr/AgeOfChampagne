@@ -21,7 +21,6 @@ class CarteCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('qr_code'),
-            TextField::new('image_carte'),
             TextField::new('name'),
             TextEditorField::new('description'),
         ];

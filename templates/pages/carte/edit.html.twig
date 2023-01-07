@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %}AOC - Modification de la carte{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h1 class="mt-4">Modification de la carte</h1>
+
+        {{ form_start(carte) }}
+
+        <div class="form-group">
+            {{ form_label(carte.name) }}
+            {{ form_widget(carte.name) }}
+            <div class="form-error">
+                {{ form_errors(carte.name) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(carte.description) }}
+            {{ form_widget(carte.description) }}
+            <div class="form-error">
+                {{ form_errors(carte.description) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(carte.qrCode) }}
+            {{ form_widget(carte.qrCode) }}
+            <div class="form-error">
+                {{ form_errors(carte.qrCode) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(carte.imageFile) }}
+            {{ form_widget(carte.imageFile) }}
+            <div class="form-error">
+                {{ form_errors(carte.imageFile) }}
+            </div>
+        </div>
+
+        {{ form_end(carte) }}
+    </div>
+{% endblock %}
