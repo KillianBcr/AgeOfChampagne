@@ -1,34 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Cartes{% endblock %}
+{% block title %}AOC - Partenaire - Fiches
+{% endblock %}
 
 {% block body %}
-<link rel="stylesheet" href="style.css">
-    <h1 class="titleform" style="font-size:30px; padding-top:15px;">Liste des Cartes</h1>
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success mt-4">
-            {{ message }}
-        </div>
-    {% endfor %}
-    <ul class="contentUl">
-        {% for carte in cartes %}
-            <div class="flex-items">
-                <a class="textform" style="text-decoration:none;" href ='{{ path('app_carte_show', {'id': carte.id}) }}'>
-                <li class="contentLi">
-                    <img style="width: 200px;height: 200px;" src="{{ vich_uploader_asset(carte, 'imageFile')  }}">
-                    <nav class="column" style="margin-left:20px; justify-content: space-around;">
-                    <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ carte.name }}</strong></p> 
-                    <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ carte.id }}</strong></p> 
-                    <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ carte.qrcode() }}</strong></p>     
-                    <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ carte.description }}</strong></p> 
-                    </nav>
-                </li>
-                </a>
-            </div>
-        {% endfor %}
-    </ul>
+    <div class="container mt-4">
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success mt-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+        <h1>Mes Cartes</h1>
+
+                Créer une fiche
+            </a>
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Numéro</th>
+                    <th scope="col">Information</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Edition</th>
+                    <th scope="col">Suppresion</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for carte in cartes %}
+                    <tr class="table-primary">
+                        <th scope="row">{{ carte.id }}</th>
+                        <td><strong> Nom : </strong></br> {{ carte.name }}
+                            </br> <strong> Description : </strong></br> {{ carte.description }}
+                            </br> <strong> QrCode : </strong></br> {{ carte.qrcode }}</td>
+
+                        <td><img style="width: 130px;height: 201px;" src="{{ vich_uploader_asset(carte, 'imageFile')  }}"></td>
+                        <td>
+                            <a href="{{ path('app_carte_edit', { id: carte.id }) }}" class="btn btn-info">Modifier</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('app_carte_delete', { id: carte.id }) }}" class="btn btn-warning">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
 
 
-
+    </div>
 {% endblock %}
