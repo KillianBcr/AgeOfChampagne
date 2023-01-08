@@ -80,7 +80,7 @@ class FichePartenaireType extends AbstractType
             ])
 
             ->add('imageFile', VichImageType::class, [
-                'label' => 'Image de la carte',
+                'label' => 'Image du partenaire',
                 'label_attr' => [
                     'class' => 'textform',
                 ],

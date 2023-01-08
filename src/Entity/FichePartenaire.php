@@ -48,10 +48,11 @@ class FichePartenaire
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+
     #[ORM\Column(length: 30)]
     private ?string $telephone = null;
 
-    #[Vich\UploadableField(mapping: 'card', fileNameProperty: 'imageName')]
+    #[Vich\UploadableField(mapping: 'partner', fileNameProperty: 'imageName')]
     private $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]

@@ -10,7 +10,9 @@
                 {% for fiche in fiches %}
                     <div class="card border-primary mb-3" style="max-width: 20rem;">
                         <div class="card-header">Partenaire n°{{ fiche.id }}</div>
-                        <div class="card-body">
+                        <div class="card-body partner-div">
+                           <img style="width: 260px;height: 403px;" src="{{ vich_uploader_asset(fiche, 'imageFile')  }}" alt="">
+                           {#  {{ dump(fiche) }} #}
                             <h4 class="card-title">
                                 <a href="{{ path('app_fiche_show', {id: fiche.id}) }}">{{ fiche.nom }}</a>
                             </h4>
