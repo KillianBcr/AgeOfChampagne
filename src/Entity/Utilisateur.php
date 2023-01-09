@@ -300,22 +300,4 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-    public function getPseudo(): ?Comment
-    {
-        return $this->pseudo;
-    }
-
-    public function setPseudo(Comment $pseudo): self
-    {
-        // set the owning side of the relation if necessary
-        if ($pseudo->getNameUti() !== $this) {
-            $pseudo->setNameUti($this);
-        }
-
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
 }

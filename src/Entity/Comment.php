@@ -20,21 +20,12 @@ class Comment
     #[ORM\Column(length: 255)]
     private ?string $content = null;
 
+    #[ORM\Column(length: 30)]
+    private ?string $sender = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNameUti(): ?utilisateur
-    {
-        return $this->nameUti;
-    }
-
-    public function setNameUti(utilisateur $nameUti): self
-    {
-        $this->nameUti = $nameUti;
-
-        return $this;
     }
 
     public function getContent(): ?string
@@ -45,6 +36,18 @@ class Comment
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getSender(): ?string
+    {
+        return $this->sender;
+    }
+
+    public function setSender(string $sender): self
+    {
+        $this->sender = $sender;
 
         return $this;
     }
