@@ -20,7 +20,7 @@ class CommentType extends AbstractType
                 'attr' => [
                     'class' => 'formEntry',
                 ],
-                'label' => 'Pseudo',
+                'label' => 'Pseudo ou Email (laissez le champ vide pour rester anonyme)',
                 'label_attr' => [
                     'class' => 'textform',
                 ],
