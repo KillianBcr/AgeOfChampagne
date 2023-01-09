@@ -28,8 +28,7 @@ class CommentController extends AbstractController
             if (strlen($comment->getSender()) == 0 ) {
                 $comment->setSender("Anonyme");
             }
-            $manager->persist($comment);
-            $manager->flush();
+            return $this->redirectToRoute('comment_form');
         }
 
         return $this->renderForm('pages/home.html.twig', [
