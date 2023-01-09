@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Comment;
+use App\Repository\CommentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +19,7 @@ class HomeController extends AbstractController
     /**
      * @Route("home", name="app_home")
      */
+    #[IsGranted('ROLE_USER')]
     #[Route(name: 'comment_form', methods: ['GET', 'POST'])]
     public function index(Request $request, EntityManagerInterface $manager): Response
     {
@@ -41,7 +44,7 @@ class HomeController extends AbstractController
 
         return $this->renderForm('pages/home.html.twig', [
             'controller_name' => 'HomeController',
-            'comment_form' => $form,
+            'comment' => $form,
         ]);
     }
 }

@@ -62,9 +62,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: FichePartenaire::class, orphanRemoval: true)]
     private Collection $fichePartenaire;
 
-    #[ORM\OneToOne(mappedBy: 'nameUti', cascade: ['persist', 'remove'])]
-    private ?Comment $pseudo = null;
-
 
     public function __construct()
     {
