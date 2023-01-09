@@ -2,12 +2,14 @@
 
 {% block body %}
 <ul class="contentUl">
-                {% for comment in comments|slice(0, 5) %}
+    <p class="titleform" style="font-size:25px;">Commentaires et avis</p><p class="titleform">(10 derniers)</p>
+                {% for comment in comments|slice(0, 10) %}
                     <div class="flex-items">
                         <li class="contentLi">
                             <nav class="column" style="margin-left:20px; justify-content: space-around;">
-                                <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ comment.content }}</strong></p> 
-                                <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ comment.sender }}</strong></p> 
+                            <p class="textform" style="font-size:20px;"><strong>Envoyé par : </strong>{{ comment.sender }}</p> 
+                                <hr>
+                            <p class="textform" style="font-size:20px;">{{ comment.content }}</p> 
                                 
                             </nav>
                         </li>

@@ -30,12 +30,6 @@ class CommentController extends AbstractController
             }
             $manager->persist($comment);
             $manager->flush();
-
-            $this->addFlash(
-                'success',
-                'Commentaire ajoutée !'
-            );
-
         }
 
         return $this->renderForm('pages/home.html.twig', [
@@ -43,11 +37,12 @@ class CommentController extends AbstractController
             'comment_form' => $form,
         ]);
     }
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/commentaire', name: 'app_comment')]
     public function indexPublic(CommentRepository $repository): Response
     {
         $comments = $repository->findAll();
+        $comments = $this->getDoctrine()->getRepository(Comment::class)->findBy([], ['id' => 'DESC'], 10);
 
         return $this->render('comment/index.html.twig', [
             'comments' => $comments,
