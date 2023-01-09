@@ -26,19 +26,9 @@
                 Procurez vous le jeu en cliqnant sur la boite ci dessus !</p>
                 </nav>
             </div>
-            <ul class="contentUl">
-                {% for comment in comment_form|slice(0, 5) %}
-                    <div class="flex-items">
-                        <li class="contentLi">
-                            <nav class="column" style="margin-left:20px; justify-content: space-around;">
-                                <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ comment.content }}</strong></p> 
-                                <p class="textform" style="font-size:20px;">Nom de la carte : <strong>{{ comment.sender }}</strong></p> 
-                                
-                            </nav>
-                        </li>
-                    </div>
-                {% endfor %}
-            </ul>
+            {% block comment %}
+                {% include "app_comment" %}
+            {% endblock %}
             <nav class="contentUl" style="padding:10px;">
                 <p class="titleform">Commentaire</p>
                 {{form(comment_form)}}
