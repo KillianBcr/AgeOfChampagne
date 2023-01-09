@@ -14,7 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProfileController extends AbstractController
 {
-    #[Route('/utilisateur/edition/{id}', name: 'app_profile', requirements: [
+    #[Route('/compte/{id}', name: 'app_profile', requirements: [
+        'id' => "\d+",
+    ],
+        methods: ['GET', 'POST'])]
+    public function index(Utilisateur $user): Response
+    {
+        return $this->render('pages/user/profile.html.twig', [
+            'user' => $user
+        ]);
+    }
+
+    #[Route('/compte/edition/{id}', name: 'app_profile_edit', requirements: [
         'id' => "\d+",
     ],
         methods: ['GET', 'POST'])]
@@ -51,7 +62,7 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/utilisateur/edition-mot-de-passe/{id}', name: 'app_edit_password', methods: ['GET', 'POST'])]
+    #[Route('/compte/edition-mot-de-passe/{id}', name: 'app_edit_password', methods: ['GET', 'POST'])]
     public function editPassword(Utilisateur $user, Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $hasher): Response
     {
         $form = $this->createForm(UserPasswordType::class);
