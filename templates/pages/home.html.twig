@@ -17,12 +17,21 @@
                 <a href="?"><img class="image2nd-2" src="img/info.png" alt="info logo"></a>
             </nav>
         </nav>
-        <div class="content2nd">
-            <nav class="text">
-            <p id="txt">Vous voulez jouer ?<br>
-            <a href="https://www.ageofchampagne.fr/"><img id="jeu" src="img/jeu.png" alt="jeu image"></a>
-            <br>
-            Procurez vous le jeu en cliqnant sur la boite ci dessus !</p>
+        <div class=column>
+            <div class="content2nd" style="opacity:90%">
+                <nav class="text">
+                <p id="txt">Vous voulez jouer ?<br>
+                <a href="https://www.ageofchampagne.fr/"><img id="jeu" src="img/jeu.png" alt="jeu image"></a>
+                <br>
+                Procurez vous le jeu en cliqnant sur la boite ci dessus !</p>
+                </nav>
+            </div>
+            {% block comment %}
+                {% include "app_comment" %}
+            {% endblock %}
+            <nav class="contentUl" style="padding:10px;">
+                <p class="titleform">Commentaire</p>
+                {{form(comment_form)}}
             </nav>
         </div>
     </div>
