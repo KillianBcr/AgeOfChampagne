@@ -23,6 +23,8 @@ class FichePartenaireCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextEditorField::new('description'),
             BooleanField::new('is_public')->renderAsSwitch(true),
+            TextField::new('image_name'),
+
         ];
     }
 

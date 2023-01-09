@@ -1,190 +1,190 @@
-    body{
-        background-image: url('img/AOC.png');
-        background-repeat: no-repeat;
-        background-size: cover;
-        margin:0;
-    }
-    .corps{
-        background-color: none;
-    }
-    .foot{
-        background-color: #f2f4f3;
-        text-align:center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .image
-    {
-        height: 40px;
-        padding-right: 15px;
-        padding-left: 15px;
-        transition: .3s ease-in-out;
-    }
-    .image:hover {
-        height: 42px;
-    }
-    .contentAcceuil{
-        padding: 25px;
-        display: flex;
-        justify-content: space-around;
+body{
+    background-image: url('img/AOC.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:0;
+}
+.corps{
+    background-color: none;
+}
+.foot{
+    background-color: #f2f4f3;
+    text-align:center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.image
+{
+    height: 40px;
+    padding-right: 15px;
+    padding-left: 15px;
+    transition: .3s ease-in-out;
+}
+.image:hover {
+    height: 42px;
+}
+.contentAcceuil{
+    padding: 25px;
+    display: flex;
+    justify-content: space-around;
 
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.image2nd{
+    transition: .1s ease-in-out;
+    animation: img 0.5s ;
+}
+.image2nd-2{
+    animation: img 0.5s ;
+    transition: .1s ease-in-out;
+}
+.image2nd-2:hover{
+    filter: invert(20%);
+}
+.image2nd:hover{
+    filter: invert(20%);
+}
+.logo{
+    animation: img 3s ;
+}
+@keyframes img{
+    0% {
+        opacity: 0;
     }
-    .column{
-        display: flex;
-        flex-direction: column;
+    100%{
+        opacity: 1;
     }
-    .image2nd{
-        transition: .1s ease-in-out;
-        animation: img 0.5s ;
-    }
-    .image2nd-2{
-        animation: img 0.5s ;
-        transition: .1s ease-in-out;
-    }
-    .image2nd-2:hover{
-        filter: invert(20%);
-    }
-    .image2nd:hover{
-        filter: invert(20%);
-    }
-    .logo{
-       animation: img 3s ;
-    }
-    @keyframes img{
-                0% {
-                    opacity: 0;
-                }
-                100%{
-                    opacity: 1;
-                }
-            }
-    .center{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 #jeu {
-        -webkit-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-        animation: mvt2 3s ;
-        height:120px;
-            }
-    #jeu:hover {
-        -webkit-transform: rotate(-15deg);
-        transform: rotate(-15deg);
-        transition-duration: 0.5s;
-    }
-        
-            @keyframes mvt2{
-                0% {
-                    left:95%;
-                }
-                100%{
-                    left: 85%;
-                }
-            }
-    .content2nd {
-        display: flex;
-        opacity:90%;
-    }
-    #txt{
-        font-size:17px;
-        font-weight:bold;
-        font-family: serif;
-        text-align:center;
-    }
-    .text {
-        display: flex;
-        background-color: #0e0e11;
-        border-radius: 15px;
-        flex:1;
-        margin: 20px;
-        margin-top: 50px;
-        font-size: 25px;
-        font-weight: bold;
-        color: #f2f4f3;
-        justify-content: center;
-        padding-top: 15px;
-    }
-    .contentUl {
-        display: flex;
-        background-color: #0e0e11;
-        border-radius: 15px;
-        flex:1;
-        margin: 30px;
-        font-size: 15px;
-        color: #f2f4f3;
-        justify-content: center;
-        padding-top: 15px;
-        flex-direction: column;
-        opacity: 90%;
-    }
-    .contentLi {
-        display: flex;
-        background-color: rgb(68, 65, 65);
-        opacity: 85%;
-        padding:20px;
-        border-radius: 15px;
-        flex:1;
-        margin: 20px;
-    }
-    .formEntry, select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    animation: mvt2 3s ;
+    height:120px;
+}
+#jeu:hover {
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+    transition-duration: 0.5s;
+}
 
-    .send {
-        width: 100%;
-        background-color: #f2f4f3;
-        color: #0e0e11;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: .1s ease-in-out;
-        font-weight: bold;
+@keyframes mvt2{
+    0% {
+        left:95%;
     }
+    100%{
+        left: 85%;
+    }
+}
+.content2nd {
+    display: flex;
+    opacity:90%;
+}
+#txt{
+    font-size:17px;
+    font-weight:bold;
+    font-family: serif;
+    text-align:center;
+}
+.text {
+    display: flex;
+    background-color: #0e0e11;
+    border-radius: 15px;
+    flex:1;
+    margin: 20px;
+    margin-top: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #f2f4f3;
+    justify-content: center;
+    padding-top: 15px;
+}
+.contentUl {
+    display: flex;
+    background-color: #0e0e11;
+    border-radius: 15px;
+    flex:1;
+    margin: 30px;
+    font-size: 15px;
+    color: #f2f4f3;
+    justify-content: center;
+    padding-top: 15px;
+    flex-direction: column;
+    opacity: 90%;
+}
+.contentLi {
+    display: flex;
+    background-color: rgb(68, 65, 65);
+    opacity: 85%;
+    padding:20px;
+    border-radius: 15px;
+    flex:1;
+    margin: 20px;
+}
+.formEntry, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 
-    .send:hover {
-        background-color: darkgrey ;
-    }
-    #carte_imageFile_file{
-        color:#f2f4f3;
-    }
-    .formul {
-        border-radius: 5px;
-        background-color:#0e0e11 ;
-        padding: 20px;
-        margin: 15px;
-        opacity:85%;
-    }
-    .titleform {
-        color:#f2f4f3;
-        font-weight: bold;
-        text-align: center;
-        font-size: 20px;
-    }
-    .textform {
-        color:#f2f4f3;
-    }
-    .footer{
-        font-weight: bold;
-        font-size: 25px;
-        text-align: center;
-        color:#0e0e11;
-        margin-top: 3px;
-    }
+.send {
+    width: 100%;
+    background-color: #f2f4f3;
+    color: #0e0e11;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+    font-weight: bold;
+}
+
+.send:hover {
+    background-color: darkgrey ;
+}
+#carte_imageFile_file{
+    color:#f2f4f3;
+}
+.formul {
+    border-radius: 5px;
+    background-color:#0e0e11 ;
+    padding: 20px;
+    margin: 15px;
+    opacity:85%;
+}
+.titleform {
+    color:#f2f4f3;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
+.textform {
+    color:#f2f4f3;
+}
+.footer{
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    color:#0e0e11;
+    margin-top: 3px;
+}
 
 @media only screen and (max-width: 1110px) {
     .text{
         margin-top: 30px;
-}
+    }
 }
 @media only screen and (max-width: 900px) {
     .corps{
@@ -273,23 +273,56 @@
         height: 105px;
     }
 }
-    @media only screen and (max-width: 1000px){
-        .formul{
-            margin-right: 50px;
-            margin-left: 50px;
-        }
+@media only screen and (max-width: 1000px){
+    .formul{
+        margin-right: 50px;
+        margin-left: 50px;
     }
-    @media only screen and (min-width: 1000px){
-        .formul{
-            margin-right: 100px;
-            margin-left: 100px;
-            margin-top:20px;
-        }
+}
+@media only screen and (min-width: 1000px){
+    .formul{
+        margin-right: 100px;
+        margin-left: 100px;
+        margin-top:20px;
     }
-    @media only screen and (min-width: 1500px){
-        .formul{
-            margin-right: 250px;
-            margin-left: 250px;
-            margin-top:50px;
-        }
+}
+@media only screen and (min-width: 1500px){
+    .formul{
+        margin-right: 250px;
+        margin-left: 250px;
+        margin-top:50px;
     }
+
+}
+
+/** Partner */
+.image-partner{
+    width: 260px;
+    height: 230px;
+    object-fit: contain;
+}
+
+.partner-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+}
+
+.partner-div img{
+    width: 260px;
+    height: 230px;
+    object-fit: contain;
+}
+
+.partner-div h4{
+
+}
+
+.container-partner-card{
+    gap : 1.5rem;
+}
+.container-partner-card >div{
+    max-width: 20rem;
+}
