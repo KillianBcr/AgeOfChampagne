@@ -13,10 +13,6 @@ class Comment
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'pseudo', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?utilisateur $nameUti = null;
-
     #[ORM\Column(length: 255)]
     private ?string $content = null;
 

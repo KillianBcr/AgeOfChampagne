@@ -15,9 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="app_home")
+     * @Route("home", name="app_home")
      */
-    #[Route('/', name: 'comment_form', methods: ['GET', 'POST'])]
+    #[Route(name: 'comment_form', methods: ['GET', 'POST'])]
     public function index(Request $request, EntityManagerInterface $manager): Response
     {
         $comment = new Comment();
@@ -26,6 +26,9 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $comment = $form->getData();
+            if (strlen($comment->getSender()) == 0 ) {
+                $comment->setSender("Anonyme");
+            }
             $manager->persist($comment);
             $manager->flush();
 
@@ -33,7 +36,6 @@ class HomeController extends AbstractController
                 'success',
                 'Commentaire ajoutée !'
             );
-            return $this->redirectToRoute('/');
 
         }
 
