@@ -26,12 +26,12 @@
                 Procurez vous le jeu en cliqnant sur la boite ci dessus !</p>
                 </nav>
             </div>
-            {% block comment %}
-                {% include "app_comment" %}
-            {% endblock %}
             <nav class="contentUl" style="padding:10px;">
-                <p class="titleform">Commentaire</p>
+                <p class="titleform">Vous voulez laisser un avis ou soumettre un probleme ?</p>
                 {{form(comment_form)}}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{path('app_comment')}}">Voir Commentaire (disponible uniquement pour admin)</a>
+                {% endif %}
             </nav>
         </div>
     </div>
