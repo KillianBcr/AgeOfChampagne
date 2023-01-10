@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ activite.nom }}{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="../style.css">
+    <nav class="contentUl">
+        <h1 class="titleform" style="font-size=25px;">{{ activite.nom }}</h1>
+        <dl>
+            <center><img style="width: 200px;height: 200px;" src="{{ vich_uploader_asset(activite, 'imageFile')  }}">
+            <dt class="titleform">Description</dt>
+            <dd class="textform">{{ activite.description }}</dd></center>
+        </dl>
+    </nav>
+
+{% endblock %}

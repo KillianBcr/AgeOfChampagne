@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %}AOC - Modification de l'Activite{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h1 class="mt-4">Modification de l'Activite</h1>
+
+        {{ form_start(activite) }}
+
+        <div class="form-group">
+            {{ form_label(activite.nom) }}
+            {{ form_widget(activite.nom) }}
+            <div class="form-error">
+                {{ form_errors(activite.nom) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(activite.description) }}
+            {{ form_widget(activite.description) }}
+            <div class="form-error">
+                {{ form_errors(activite.description) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(activite.id) }}
+            {{ form_widget(activite.id) }}
+            <div class="form-error">
+                {{ form_errors(activite.id) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(activite.icon) }}
+            {{ form_widget(activite.icon) }}
+            <div class="form-error">
+                {{ form_errors(activite.icon) }}
+            </div>
+        </div>
+
+        {{ form_end(activite) }}
+    </div>
+{% endblock %}
