@@ -90,6 +90,33 @@ class ActiviteController extends AbstractController
 
         return $this->redirectToRoute('app_activite');
     }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/partenaire/activite/creation', name: 'app_activite_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $manager): Response
+    {
+        $activite = new Activite();
+        $form = $this->createForm(Activite::class, $activite);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $activite = $form->getData();
+
+            $manager->persist($activite);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre activite a été créé avec succès !'
+            );
+
+            return $this->redirectToRoute('app_activite');
+        }
+
+        return $this->render('pages/activite/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 }
 
 
