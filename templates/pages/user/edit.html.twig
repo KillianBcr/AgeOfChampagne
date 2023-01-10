@@ -3,13 +3,14 @@
 {% block title %}Modification de profil{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="mt-4">Modification du profil</h1>
+    <div class="container py-5 h-100">
+        <h1 class="mt-4">Modification de votre profil</h1>
         {% for message in app.flashes('warning') %}
             <div class="alert alert-warning mt-4">
                 {{ message }}
             </div>
         {% endfor %}
         {{ form(form) }}
+        <a href="{{ path('app_edit_password', {id : app.user.id}) }}">Modifier le mot de passe</a>
     </div>
 {% endblock %}
