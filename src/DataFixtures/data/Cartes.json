@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Chardonnay",
+    "description" : "Une petite description",
+    "qrCode" : "1",
+    "crus" : 2,
+    "cepage" : 1,
+    "imageFile" : "public/images/card/aoc-montagnedereims-chamery.png",
+    "imageName" : "aoc-montagnedereims-chamery.png"
+  }
+]
