@@ -24,11 +24,10 @@ class CrusFixtures extends Fixture
 
         foreach($crusChardonnay as $elmt)
         {
-
             CrusFactory::createOne([
-                'nom' => $elmt->nom,
-                'description' => $elmt->description,
-                'cepage' => $cepageRepository->find($elmt->cepage)
+                'nom' => $elmt['nom'],
+                'description' => $elmt['description'],
+                'cepage' => $cepageRepository->find($elmt['cepage'])
             ]);
         }
     }
@@ -39,5 +38,4 @@ class CrusFixtures extends Fixture
             CepageFixtures::class,
         ];
     }
-
 }
