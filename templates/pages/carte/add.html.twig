@@ -1,12 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}CardFormulaire{% endblock %}
+{% block title %}AOC - Nouvelle carte{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="style.css">
-    <div class="formul">
-    <p class="titleform">Formulaire d'ajout de carte !</p>
-        {{form(formulaire)}}
+    <div class="container">
+
+        <h1 class="mt-4">Création d'une carte</h1>
+
+        {{ form_start(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            <div class="form-error">
+                {{ form_errors(form.name) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+            <div class="form-error">
+                {{ form_errors(form.description) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.qrCode) }}
+            {{ form_widget(form.qrCode) }}
+            <div class="form-error">
+                {{ form_errors(form.qrCode) }}
+            </div>
+        </div>
+
+        {{ form_end(form) }}
     </div>
 {% endblock %}
 
