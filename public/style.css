@@ -326,3 +326,61 @@ body{
 .container-partner-card >div{
     max-width: 20rem;
 }
+
+/** Home **/
+#mapContainer {
+    /*display: none;*/
+    opacity: 0;
+    z-index: -1;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 2px #000000;
+}
+
+.mapContainerVisible {
+    /*display: block !important;*/
+    opacity: 1 !important;
+    z-index: 1 !important;
+}
+
+#mapContainer .map {
+    position: relative;
+}
+
+#mapContainer .map > img {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border-radius: 50%;
+    background: white;
+    z-index: 999;
+}
+
+#mapContainer .map {
+    max-width: 900px;
+    max-height: 600px;
+    width: 90vw;
+    height: 90vh;
+}
+
+ #map {
+    /*max-width: 900px;*/
+    max-height: 600px;
+    /*width: 90vw;*/
+    height: 90vh;
+}
+
+
+.map-mobile {
+    display: none;
+}
+@media only screen and (max-width: 600px){
+    .map-mobile {
+        display: block;
+    }
+}
