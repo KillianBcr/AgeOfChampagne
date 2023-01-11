@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CarteController extends AbstractController
 {
@@ -34,6 +35,33 @@ class CarteController extends AbstractController
 
         return $this->render('pages/carte/index.public.html.twig', [
             'cartes' => $cartes,
+        ]);
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/carte/ajouter', name: 'app_card_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
+    {
+        $carte = new Carte();
+        $form = $this->createForm(CarteType::class, $carte);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $carte = $form->getData();
+            $manager->persist($carte);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Carte ajoutée !'
+            );
+            return $this->redirectToRoute('app_carte');
+
+        }
+
+        return $this->renderForm('pages/carte/add.html.twig', [
+            'controller_name' => 'CardFormController',
+            'form' => $form,
         ]);
     }
 
