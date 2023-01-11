@@ -3,14 +3,31 @@
 {% block title %}{{ carte.name }}{% endblock %}
 
 {% block body %}
-<link rel="stylesheet" href="../style.css">
-    <nav class="contentUl">
-        <h1 class="titleform" style="font-size=25px;">{{ carte.name }}</h1>
-        <dl>
-            <center><img style="width: 200px;height: 200px;" src="{{ vich_uploader_asset(carte, 'imageFile')  }}">
-            <dt class="titleform">Description</dt>
-            <dd class="textform">{{ carte.description }}</dd></center>
-        </dl>
-    </nav>
+    <div class="container">
 
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h1 class="mt-4">{{ carte.name }}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_carte_edit', { id: carte.id }) }}"><span class="material-symbols-outlined">edit_square</span></a>
+            {% endif %}</h1>
+
+        <div style="display: flex;flex-direction: row" class="mt-4">
+            <img src="{{ vich_uploader_asset(carte, 'imageFile')  }}" alt="">
+            <dl>
+                <dt>Description</dt>
+                <dd>{{ carte.description|raw }}</dd>
+
+                <dt>Cépage</dt>
+                <dd>{{ carte.cepage.name ?? 'Aucune'  }}</dd>
+
+                <dt>Crus</dt>
+                <dd>{{ carte.crus.nom ?? 'Aucune'  }}</dd>
+            </dl>
+        </div>
+    </div>
 {% endblock %}
