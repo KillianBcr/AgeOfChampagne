@@ -38,6 +38,22 @@ class CarteRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    /**
+     * @return Carte[]
+     */
+    public function search(string $research = ''): array
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->where('c.name > :research')
+            ->orderBy('c.name', 'ASC');
+
+        $query = $qb->getQuery();
+
+        return $query->execute([':research' => $research]);
+    }
+
+
 //     * @return Carte[] Returns an array of Carte objects
 //     */
 //    public function findByExampleField($value): array
