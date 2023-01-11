@@ -20,21 +20,31 @@ class CarteController extends AbstractController
     #[Route('/carte/edition', name: 'app_carte', methods: ['GET'])]
     public function index(CarteRepository $repository, Request $request): Response
     {
-        $cartes = $repository->findAll();
+        $search = $request->query->get('search');
+        if (null == $search) {
+            $search = '';
+        }
+        $cartes = $repository->search($search);
+
         return $this->render('pages/carte/index.html.twig', [
             'cartes' => $cartes,
+            'search' => $search,
         ]);
     }
 
-
     #[IsGranted('ROLE_USER')]
     #[Route('/carte', name: 'app_carte_public')]
-    public function indexPublic(CarteRepository $repository): Response
+    public function indexPublic(CarteRepository $repository, Request $request): Response
     {
-        $cartes = $repository->findAll();
+        $search = $request->query->get('search');
+        if (null == $search) {
+            $search = '';
+        }
+        $cartes = $repository->search($search);
 
         return $this->render('pages/carte/index.public.html.twig', [
             'cartes' => $cartes,
+            'search' => $search,
         ]);
     }
 
@@ -55,8 +65,8 @@ class CarteController extends AbstractController
                 'success',
                 'Carte ajoutée !'
             );
-            return $this->redirectToRoute('app_carte');
 
+            return $this->redirectToRoute('app_carte');
         }
 
         return $this->renderForm('pages/carte/add.html.twig', [
@@ -118,4 +128,5 @@ class CarteController extends AbstractController
 
         return $this->redirectToRoute('app_carte');
     }
+
 }
