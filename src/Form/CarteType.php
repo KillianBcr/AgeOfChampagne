@@ -5,9 +5,12 @@ namespace App\Form;
 use App\Entity\Carte;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CarteType extends AbstractType
@@ -17,37 +20,55 @@ class CarteType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'attr' => [
-                    'class' => 'formEntry',
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '30',
                 ],
-                'label' => 'Titre',
+                'label' => 'Nom',
                 'label_attr' => [
-                    'class' => 'textform',
+                    'class' => 'form-label  mt-4',
+                ],
+                'constraints' => [
+                    new Length(['min' => 2, 'max' => 30]),
                 ],
             ])
-            ->add('description', TextType::class, [
+            ->add('description', TextareaType::class, [
                 'attr' => [
-                    'class' => 'formEntry',
+                    'class' => 'form-control',
+                    'min' => 1,
+                    'max' => 5,
                 ],
                 'label' => 'Description',
                 'label_attr' => [
-                    'class' => 'textform',
+                    'class' => 'form-label mt-4',
+                ],
+                'constraints' => [
+                    new NotBlank(),
                 ],
             ])
             ->add('qrCode', TextType::class, [
                 'attr' => [
-                    'class' => 'formEntry',
+                    'class' => 'form-control',
+                    'minlenght' => '2',
+                    'maxlenght' => '180',
                 ],
-                'label' => 'Qr Code',
+                'label' => 'Qr code',
                 'label_attr' => [
-                    'class' => 'textform',
+                    'class' => 'form-label  mt-4',
+                ],
+                'constraints' => [
+                    new Length(['min' => 2, 'max' => 180]),
                 ],
             ])
+
             ->add('imageFile', VichImageType::class, [
-                'label' => 'Image de la carte',
-                'label_attr' => [
-                    'class' => 'textform',
+                'attr' => [
+                    'class' => 'form-label',
                 ],
-                'required' => false,
+                'label' => 'Image',
+                'label_attr' => [
+                    'class' => 'form-label',
+                ],
             ])
 
             ->add('Envoyer', SubmitType::class, [

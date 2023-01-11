@@ -27,6 +27,8 @@
                                 
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <a class="dropdown-item" href="{{ path('app_fiche') }}">Espace partenaire</a>
+                                    <a class="dropdown-item" href="{{ path('app_carte') }}">Espace cartes</a>
+
                                     <div class="dropdown-divider"></div>
                                 {% endif %}
 
