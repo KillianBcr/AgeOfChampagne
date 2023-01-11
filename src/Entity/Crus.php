@@ -22,11 +22,11 @@ class Crus
     #[ORM\Column(length: 30)]
     private ?string $cepage = null;
 
-    #[ORM\Column(length: 30)]
+    /* #[ORM\Column(length: 30)]
     private ?string $adresse = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $coord = null;
+    private ?string $coord = null; */
 
     public function getId(): ?int
     {
@@ -69,7 +69,7 @@ class Crus
         return $this;
     }
 
-    public function getAdresse(): ?string
+    /* public function getAdresse(): ?string
     {
         return $this->adresse;
     }
@@ -91,5 +91,5 @@ class Crus
         $this->coord = $coord;
 
         return $this;
-    }
+    } */
 }
