@@ -17,17 +17,17 @@ class CrusFixtures extends Fixture
     }
     public function load(ObjectManager $manager): void
     {
-        $chardonnay= file_get_contents(__DIR__ . '/data/Crus_Chardonnay.json',true);
-        $crusChardonnay = json_decode($chardonnay,true);
+        $cru= file_get_contents(__DIR__ . '/data/Crus.json',true);
+        $crus = json_decode($cru,true);
 
-        $cepageRepository = $this->repository;
+        $crusRepository = $this->repository;
 
-        foreach($crusChardonnay as $elmt)
+        foreach($crus as $elmt)
         {
             CrusFactory::createOne([
                 'nom' => $elmt['nom'],
                 'description' => $elmt['description'],
-                'cepage' => $cepageRepository->find($elmt['cepage'])
+                'cepage' => $crusRepository->find($elmt['cepage'])
             ]);
         }
     }
