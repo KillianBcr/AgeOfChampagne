@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<link rel="stylesheet" href="style.css">
 <ul class="contentUl">
     <p class="titleform" style="font-size:25px;">Commentaires et avis</p><p class="titleform">(10 derniers)</p>
                 {% for comment in comments|slice(0, 10) %}
