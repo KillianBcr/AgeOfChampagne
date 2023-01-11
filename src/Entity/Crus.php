@@ -19,14 +19,9 @@ class Crus
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $cepage = null;
-
-    /* #[ORM\Column(length: 30)]
-    private ?string $adresse = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $coord = null; */
+    #[ORM\ManyToOne(inversedBy: 'crus')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Cepage $cepage = null;
 
     public function getId(): ?int
     {
@@ -57,39 +52,16 @@ class Crus
         return $this;
     }
 
-    public function getCepage(): ?string
+    public function getCepage(): ?Cepage
     {
         return $this->cepage;
     }
 
-    public function setCepage(string $cepage): self
+    public function setCepage(?Cepage $cepage): self
     {
         $this->cepage = $cepage;
 
         return $this;
     }
 
-    /* public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function getCoord(): ?string
-    {
-        return $this->coord;
-    }
-
-    public function setCoord(string $coord): self
-    {
-        $this->coord = $coord;
-
-        return $this;
-    } */
 }
