@@ -70,8 +70,9 @@ class RegistrationFormType extends AbstractType
                 'input'=>'datetime',
                 'label' => 'Date de naissance',
                 'label_attr' => [
-                    'class' => 'form-label  mt-4',
+                    'class' => 'form-label  mt-4'
                 ],
+                'widget' => 'single_text'
             ])
 
             ->add('telephone', TextType::class, [

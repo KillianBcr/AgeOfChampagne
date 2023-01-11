@@ -4,52 +4,50 @@ namespace App\DataFixtures;
 
 use App\Entity\Carte;
 use App\Factory\CarteFactory;
+use App\Factory\CrusFactory;
+use App\Repository\CepageRepository;
+use App\Repository\CrusRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\File\File;
 
-class CardFixtures extends Fixture
+class CardFixtures extends Fixture implements DependentFixtureInterface
 {
+    public CepageRepository $repository;
+    public CrusRepository $repository2;
+    public function __construct(CepageRepository $repository, CrusRepository $repository2)
+    {
+        $this->repository = $repository;
+        $this->repository2 = $repository2;
+    }
     public function load(ObjectManager $manager): void
     {
-        $cartes = [];
-        $carte1 = new Carte();
-        $carte1->setName('Bassuet')
-            ->setQrCode('1')
-            ->setDescription('Une petite description')
-            ->setImageFile(new File('public/images/card/aoc-coteauxvitryats-bassuet.png'));
-        $carte1->setImageName('aoc-coteauxvitryats-bassuet.png');
-        $manager->persist($carte1);
-        $cartes[] = $carte1;
+        $carte= file_get_contents(__DIR__ . '/data/Cartes.json',true);
+        $cartes = json_decode($carte,true);
 
-        $carte2 = new Carte();
-        $carte2->setName('Baroville')
-            ->setQrCode('1')
-            ->setDescription('Une petite description')
-            ->setImageFile(new File('public/images/card/aoc-cotedesbar-baroville.png'));
-        $carte2->setImageName('aoc-cotedesbar-baroville.png');
-        $manager->persist($carte2);
-        $cartes[] = $carte2;
+        $crusRepository = $this->repository2;
+        $cepageRepository = $this->repository;
 
+        foreach($cartes as $elmt)
+        {
+            $carte = CarteFactory::createOne([
+                'name' => $elmt['name'],
+                'description' => $elmt['description'],
+                'qrCode' => $elmt['qrCode'],
+                'cepage' => $cepageRepository->find($elmt['cepage']),
+                'crus' => $crusRepository->find($elmt['crus']),
+                'imageName' => $elmt['imageName'],
+                'imageFile' => new File( $elmt['imageFile']),
+            ]);
+        }
+    }
 
-        $carte3 = new Carte();
-        $carte3->setName('Chouilly')
-            ->setQrCode('1')
-            ->setDescription('Une petite description')
-            ->setImageFile(new File('public/images/card/aoc-cotedesblancs-chouilly.png'));
-        $carte3->setImageName('aoc-cotedesblancs-chouilly.png');
-        $manager->persist($carte3);
-        $cartes[] = $carte3;
-
-        $carte4 = new Carte();
-        $carte4->setName('Barbonne Fayel')
-            ->setQrCode('1')
-            ->setDescription('Une petite description')
-            ->setImageFile(new File('public/images/card/aoc-cotedesezanne-barbonnefayel.png'));
-        $carte4->setImageName('aoc-cotedesezanne-barbonnefayel.png');
-        $manager->persist($carte4);
-        $cartes[] = $carte4;
-
-        $manager->flush();
+    public function getDependencies()
+    {
+        return [
+            CepageFixtures::class,
+            CrusFixtures::class,
+        ];
     }
 }

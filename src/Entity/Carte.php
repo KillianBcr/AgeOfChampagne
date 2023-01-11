@@ -36,6 +36,14 @@ class Carte
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private \DateTimeImmutable $updatedAt;
 
+    #[ORM\ManyToOne(inversedBy: 'cartes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Crus $crus = null;
+
+    #[ORM\ManyToOne(inversedBy: 'cartes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Cepage $cepage = null;
+
 
     public function getName(): ?string
     {
@@ -126,5 +134,29 @@ class Carte
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    public function getCrus(): ?Crus
+    {
+        return $this->crus;
+    }
+
+    public function setCrus(?Crus $crus): self
+    {
+        $this->crus = $crus;
+
+        return $this;
+    }
+
+    public function getCepage(): ?Cepage
+    {
+        return $this->cepage;
+    }
+
+    public function setCepage(?Cepage $cepage): self
+    {
+        $this->cepage = $cepage;
+
+        return $this;
     }
 }

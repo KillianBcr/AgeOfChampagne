@@ -21,9 +21,13 @@ class Cepage
     #[ORM\OneToMany(mappedBy: 'cepage', targetEntity: Crus::class)]
     private Collection $crus;
 
+    #[ORM\OneToMany(mappedBy: 'cepage', targetEntity: Carte::class)]
+    private Collection $cartes;
+
     public function __construct()
     {
         $this->crus = new ArrayCollection();
+        $this->cartes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,6 +71,36 @@ class Cepage
             // set the owning side to null (unless already changed)
             if ($cru->getCepage() === $this) {
                 $cru->setCepage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Carte>
+     */
+    public function getCartes(): Collection
+    {
+        return $this->cartes;
+    }
+
+    public function addCarte(Carte $carte): self
+    {
+        if (!$this->cartes->contains($carte)) {
+            $this->cartes->add($carte);
+            $carte->setCepage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarte(Carte $carte): self
+    {
+        if ($this->cartes->removeElement($carte)) {
+            // set the owning side to null (unless already changed)
+            if ($carte->getCepage() === $this) {
+                $carte->setCepage(null);
             }
         }
 
