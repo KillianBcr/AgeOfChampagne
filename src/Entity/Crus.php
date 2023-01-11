@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CrusRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CrusRepository::class)]
@@ -22,6 +24,14 @@ class Crus
     #[ORM\ManyToOne(inversedBy: 'crus')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Cepage $cepage = null;
+
+    #[ORM\OneToMany(mappedBy: 'crus', targetEntity: Carte::class)]
+    private Collection $cartes;
+
+    public function __construct()
+    {
+        $this->cartes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +70,36 @@ class Crus
     public function setCepage(?Cepage $cepage): self
     {
         $this->cepage = $cepage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Carte>
+     */
+    public function getCartes(): Collection
+    {
+        return $this->cartes;
+    }
+
+    public function addCarte(Carte $carte): self
+    {
+        if (!$this->cartes->contains($carte)) {
+            $this->cartes->add($carte);
+            $carte->setCrus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarte(Carte $carte): self
+    {
+        if ($this->cartes->removeElement($carte)) {
+            // set the owning side to null (unless already changed)
+            if ($carte->getCrus() === $this) {
+                $carte->setCrus(null);
+            }
+        }
 
         return $this;
     }
