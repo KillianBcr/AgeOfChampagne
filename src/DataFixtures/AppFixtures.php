@@ -9,6 +9,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
@@ -59,24 +60,24 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
-/*
-        for ($i = 0; $i < 5; ++$i) {
-            $domain = $this->faker->domainName;
-            $partenaire = new Utilisateur();
-            $partenaire->setNom($this->faker->lastName())
-                ->setPrenom($this->faker->firstName())
-                ->setCp($this->faker->postcode())
-                ->setVille($this->faker->city())
-                ->setDatenais($this->faker->dateTime())
-                ->setEmail($user->getNom().$user->getPrenom().'@'.$domain)
-                ->setTelephone($this->faker->unique()->phoneNumber())
-                ->setRoles(['ROLE_PARTENAIRE']);
-            $password = $this->userPasswordHasher->hashPassword($user, 'test');
-            $partenaire->setPassword($password);
-            $users[] = $partenaire;
-            $manager->persist($partenaire);
-        }
-*/
+        /*
+                for ($i = 0; $i < 5; ++$i) {
+                    $domain = $this->faker->domainName;
+                    $partenaire = new Utilisateur();
+                    $partenaire->setNom($this->faker->lastName())
+                        ->setPrenom($this->faker->firstName())
+                        ->setCp($this->faker->postcode())
+                        ->setVille($this->faker->city())
+                        ->setDatenais($this->faker->dateTime())
+                        ->setEmail($user->getNom().$user->getPrenom().'@'.$domain)
+                        ->setTelephone($this->faker->unique()->phoneNumber())
+                        ->setRoles(['ROLE_PARTENAIRE']);
+                    $password = $this->userPasswordHasher->hashPassword($user, 'test');
+                    $partenaire->setPassword($password);
+                    $users[] = $partenaire;
+                    $manager->persist($partenaire);
+                }
+        */
 
         // Fiche Partenaire
         for ($i = 0; $i < 10; ++$i) {
@@ -87,16 +88,6 @@ class AppFixtures extends Fixture
                 ->setEmail($this->faker->email())
                 ->setTelephone($this->faker->phoneNumber());
             $manager->persist($fiche);
-        }
-
-        // Carte
-
-        for ($i = 0; $i < 12; ++$i) {
-            $carte = new Carte();
-            $carte->setName($this->faker->name())
-                ->setQrCode("qrcode")
-                ->setDescription("description");
-            $manager->persist($carte);
         }
 
         $manager->flush();
