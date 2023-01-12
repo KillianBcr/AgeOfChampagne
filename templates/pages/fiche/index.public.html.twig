@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}AOC - Partenaires {% endblock %}
-{% block header %}<link rel="stylesheet" href="style.css"> {% endblock %}
+{% block header %}
+    <link rel="stylesheet" href="style.css">
+    {% include "partials/_header.html.twig" %}
+{% endblock %}
 
 {% block body %}
     <div class="container mt-4">
