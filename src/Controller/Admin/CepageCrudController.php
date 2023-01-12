@@ -2,20 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Carte;
+use App\Entity\Cepage;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
-class CarteCrudController extends AbstractCrudController
+class CepageCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Carte::class;
+        return Cepage::class;
     }
 
 
@@ -24,8 +21,6 @@ class CarteCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
-            TextEditorField::new('description'),
-            ImageField::new('imageName')->setUploadDir('/public/images'),
         ];
     }
 
