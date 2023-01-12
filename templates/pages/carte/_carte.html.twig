@@ -1,5 +1,5 @@
     <div class="container mt-4">
-        <h1>Liste des cartes</h1>
+        <h1>Collection</h1>
         <form action="{{ path('app_carte_public') }}" style="padding: 15px" class="d-flex" role="search">
             <input name="search" class="form-control me-2" type="search" placeholder="Rechercher une carte" aria-label="Search">
             <button class="btn btn-dark" type="submit">Rechercher</button>
@@ -16,7 +16,7 @@
         <br>
         <div class="d-flex justify-content-center flex-wrap container-partner-card">
             {% for carte in cartes %}
-                <div class="card" style="width: 15rem;">
+                <div class="card" style="width: 15rem;background-color: #FFFFFF;">
                     <a href="{{ path('app_carte_show', {'id': carte.id}) }}"><img class="card-img-top" src="{{ vich_uploader_asset(carte, 'imageFile')  }}" alt="Card image cap">
                     </a>
                 </div>
