@@ -3,9 +3,12 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="mt-4">Inscription</h1>
-
-        {{ form(registrationForm) }}
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-6 mb-4 mb-lg-0">
+                <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+                {{ form(registrationForm) }}
+            </div>
+        </div>
     </div>
 {% endblock %}
