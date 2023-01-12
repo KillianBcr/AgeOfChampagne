@@ -18,7 +18,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/2.png",
     "imageName" : "2.png",
-    "region" : 1
+    "region" : 2
 
   },
 
@@ -30,7 +30,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/3.png",
     "imageName" : "3.png",
-    "region" : 1
+    "region" : 3
 
   },
 
@@ -42,7 +42,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/4.png",
     "imageName" : "4.png",
-    "region" : 1
+    "region" : 4
 
   },
 
@@ -54,7 +54,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/5.png",
     "imageName" : "5.png",
-    "region" : 1
+    "region" : 2
 
   },
 
@@ -66,7 +66,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/6.png",
     "imageName" : "6.png",
-    "region" : 1
+    "region" : 3
 
   },
 
@@ -78,7 +78,7 @@
     "cepage" : 3,
     "imageFile" : "public/images/card/7.png",
     "imageName" : "7.png",
-    "region" : 1
+    "region" : 5
 
   },
 
@@ -126,7 +126,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/11.png",
     "imageName" : "11.png",
-    "region" : 1
+    "region" : 6
 
   },
 
@@ -186,7 +186,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/16.png",
     "imageName" : "16.png",
-    "region" : 1
+    "region" : 3
 
   },
 
@@ -198,7 +198,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/17.png",
     "imageName" : "17.png",
-    "region" : 1
+    "region" : 6
 
   },
 
@@ -210,7 +210,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/18.png",
     "imageName" : "18.png",
-    "region" : 1
+    "region" : 3
 
   },
 
@@ -222,7 +222,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/19.png",
     "imageName" : "19.png",
-    "region" : 1
+    "region" : 3
 
   },
 
@@ -258,7 +258,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/22.png",
     "imageName" : "22.png",
-    "region" : 1
+    "region" : 3
 
   },
 
@@ -270,7 +270,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/23.png",
     "imageName" : "23.png",
-    "region" : 1
+    "region" : 3
 
   },
 
@@ -282,7 +282,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/24.png",
     "imageName" : "24.png",
-    "region" : 1
+    "region" : 5
 
   },
 
@@ -294,7 +294,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/25.png",
     "imageName" : "25.png",
-    "region" : 1
+    "region" : 2
 
   },
 
@@ -318,7 +318,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/27.png",
     "imageName" : "27.png",
-    "region" : 1
+    "region" : 5
 
   },
 
@@ -330,7 +330,7 @@
     "cepage" : 3,
     "imageFile" : "public/images/card/28.png",
     "imageName" : "28.png",
-    "region" : 1
+    "region" : 5
 
   },
 
@@ -342,7 +342,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/29.png",
     "imageName" : "29.png",
-    "region" : 1
+    "region" : 3
 
   },
 
@@ -366,7 +366,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/31.png",
     "imageName" : "31.png",
-    "region" : 1
+    "region" : 6
 
   },
 
@@ -378,7 +378,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/32.png",
     "imageName" : "32.png",
-    "region" : 1
+    "region" : 5
 
   },
 
@@ -390,7 +390,7 @@
     "cepage" : 2,
     "imageFile" : "public/images/card/33.png",
     "imageName" : "33.png",
-    "region" : 1
+    "region" : 5
 
   },
 
@@ -402,7 +402,7 @@
     "cepage" : 3,
     "imageFile" : "public/images/card/34.png",
     "imageName" : "34.png",
-    "region" : 1
+    "region" : 5
 
   },
 
@@ -414,7 +414,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/35.png",
     "imageName" : "35.png",
-    "region" : 1
+    "region" : 5
 
   },
 
@@ -426,7 +426,7 @@
     "cepage" : 1,
     "imageFile" : "public/images/card/36.png",
     "imageName" : "36.png",
-    "region" : 1
+    "region" : 4
 
   }
 ]
