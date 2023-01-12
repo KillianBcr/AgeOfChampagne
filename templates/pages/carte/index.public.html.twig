@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Cartes{% endblock %}
+{% block title %}AOC - Cartes{% endblock %}
 
 {% block body %}
-    <div class="container mt-4">
-        <h1 style="color: white">Liste des cartes</h1>
 
+    <div class="container mt-4">
+        <h1>Liste des cartes</h1>
+        <form action="{{ path('app_carte_public') }}" style="padding: 15px" class="d-flex" role="search">
+            <input name="search" class="form-control me-2" type="search" placeholder="Rechercher une carte" aria-label="Search">
+            <button class="btn btn-dark" type="submit">Rechercher</button>
+        </form>
         <div class="d-flex justify-content-center flex-wrap container-partner-card">
             {% for carte in cartes %}
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 15rem;">
                     <a href="{{ path('app_carte_show', {'id': carte.id}) }}"><img class="card-img-top" src="{{ vich_uploader_asset(carte, 'imageFile')  }}" alt="Card image cap">
                     </a>
                 </div>
@@ -16,6 +20,5 @@
         </div>
 
     </div>
-
 
 {% endblock %}
