@@ -44,6 +44,9 @@ class Carte
     #[ORM\JoinColumn(nullable: false)]
     private ?Cepage $cepage = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $coord = null;
+
 
     public function getName(): ?string
     {
@@ -156,6 +159,18 @@ class Carte
     public function setCepage(?Cepage $cepage): self
     {
         $this->cepage = $cepage;
+
+        return $this;
+    }
+
+    public function getCoord(): ?string
+    {
+        return $this->coord;
+    }
+
+    public function setCoord(?string $coord): self
+    {
+        $this->coord = $coord;
 
         return $this;
     }

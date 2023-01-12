@@ -20,7 +20,7 @@
             <img src="https://cdn-icons-png.flaticon.com/512/561/561189.png" alt="fermer" onclick="displayMap()"/>
         </div>
     </div>
-<?php echo "123442" ?>
+    <?php echo "123442" ?>
     <script>
         function displayMap() {
             let mapContainer = document.getElementById('mapContainer');
@@ -33,14 +33,21 @@
             crossorigin=""></script>
 
     <script type="text/javascript">
-        {#let lat2 = {{ carte.latitude|json_encode() }};#}
-        {#let lon2 = {{ carte.longitude|json_encode() }};#}
-
         let lat = 49.06001;
         let lon = 4.2188;
         let zoom = 10;
         let myMap = null;
 
+        {% set coord = carte.coord|split(',') %}
+        {% if (coord[0] is defined) and (coord[0] is not null) %}
+            lat = {{ coord[0] }};
+        {% endif %}
+        {% if (coord[1] is defined) and (coord[1] is not null) %}
+            lon = {{ coord[1] }};
+        {% endif %}
+        {% if (coord[2] is defined) and (coord[2] is not null) %}
+            zoom = {{ coord[2] }};
+        {% endif %}
 
         function initMap() {
             myMap = L.map('map').setView([lat, lon], zoom);
