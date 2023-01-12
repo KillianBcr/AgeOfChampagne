@@ -364,6 +364,12 @@ body {
     object-fit: contain;
 }
 
+.container > h1{
+    /*Nos partenaires*/
+    color: #f2f4f3;
+    display: flex;
+    justify-content: center;
+}
 .partner-div h4 {
 
 }
