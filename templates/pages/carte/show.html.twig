@@ -45,6 +45,16 @@
         let zoom = 10;
         let myMap = null;
 
+        {% set coord = carte.coord|split(',') %}
+        {% if (coord[0] is defined) and (coord[0] is not null) %}
+        lat = {{ coord[0] }};
+        {% endif %}
+        {% if (coord[1] is defined) and (coord[1] is not null) %}
+        lon = {{ coord[1] }};
+        {% endif %}
+        {% if (coord[2] is defined) and (coord[2] is not null) %}
+        zoom = {{ coord[2] }};
+        {% endif %}
 
         function initMap() {
             myMap = L.map('map').setView([lat, lon], zoom);
