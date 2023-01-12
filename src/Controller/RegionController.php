@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Region;
+use App\Repository\CarteRepository;
 use App\Repository\RegionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +29,11 @@ class RegionController extends AbstractController
 
     public function show(Region $region): Response
     {
+        $cartes = $region->getCartes();
         return $this->render('pages/region/show.html.twig',
-            ['regions' => $region]);
+            [
+                'regions' => $region,
+                'cartes' => $cartes
+                ]);
     }
 }
