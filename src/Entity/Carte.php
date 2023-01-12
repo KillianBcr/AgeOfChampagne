@@ -47,6 +47,10 @@ class Carte
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $coord = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cartes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Region $region = null;
+
 
     public function getName(): ?string
     {
@@ -171,6 +175,18 @@ class Carte
     public function setCoord(?string $coord): self
     {
         $this->coord = $coord;
+
+        return $this;
+    }
+
+    public function getRegion(): ?Region
+    {
+        return $this->region;
+    }
+
+    public function setRegion(?Region $region): self
+    {
+        $this->region = $region;
 
         return $this;
     }
