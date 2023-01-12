@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Carte;
+use App\Entity\Cepage;
 use App\Entity\FichePartenaire;
 use App\Entity\Partenaire;
 use App\Entity\Utilisateur;
@@ -32,5 +33,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', Utilisateur::class);
         yield MenuItem::linkToCrud('Fiches Partenaires', 'fa fa-user', FichePartenaire::class);
         yield MenuItem::linkToCrud('Cartes', 'fa fa-th', Carte::class);
+        yield MenuItem::linkToCrud('Cepages', 'fa fa-th', Cepage::class);
+        yield MenuItem::linkToCrud('Crus', 'fa fa-th', Crus::class);
     }
 }
