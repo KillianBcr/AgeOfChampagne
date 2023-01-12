@@ -44,6 +44,7 @@ class CardFixtures extends Fixture implements DependentFixtureInterface
                 'region' => $regionRepository->find($elmt['region']),
                 'imageName' => $elmt['imageName'],
                 'imageFile' => new File( $elmt['imageFile']),
+                'coord' => $elmt['coord'],
             ]);
         }
     }
