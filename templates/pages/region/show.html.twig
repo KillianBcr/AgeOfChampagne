@@ -1,8 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Carte de la Région {{ region.nom }}{% endblock %}
+{% block title %}Cartes de la Région {{ regions.nom }}{% endblock %}
 
 {% block body %}
-    <h1>{{ region.nom }}</h1>
-    {{ include('pages/carte/_carte.html.twig', {'region': region.carte}) }}
+<div class="container mt-4">
+    <h1>{{ regions.nom }}</h1>
+   <br>
+    <p>Voici toutes les cartes représentatives de la belle région {{ regions.nom }} </p>
+    <div class="d-flex justify-content-center flex-wrap container-partner-card">
+        {% for carte in cartes %}
+            <div class="card" style="width: 15rem;">
+                <a href="{{ path('app_carte_show', {'id': carte.id}) }}"><img class="card-img-top" src="{{ vich_uploader_asset(carte, 'imageFile')  }}" alt="Card image cap">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

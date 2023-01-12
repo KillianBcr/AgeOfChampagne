@@ -6,7 +6,7 @@
         </form>
         <br>
         <div class="nav-item dropdown">
-            <a style="display: flex;" class="nav-link dropdown" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span style="display: flex" class="material-symbols-outlined">filter_list</span><h5>Filtrer</h5></a>
+            <a style="display: flex;" class="nav-link dropdown" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span style="display: flex" class="material-symbols-outlined">filter_list</span><h5>Filtrer par région</h5></a>
             <div class="dropdown-menu">
                 {% for region in regions %}
                     <a class="dropdown-item" href="{{ path('app_region_show', {'id': region.id}) }}">{{ region.nom }}</a>
