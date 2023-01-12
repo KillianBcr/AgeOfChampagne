@@ -3,6 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Carte;
+use App\Entity\Cepage;
+use App\Entity\Region;
+use App\Repository\CepageRepository;
+use App\Repository\RegionRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -69,6 +74,32 @@ class CarteType extends AbstractType
                 'label_attr' => [
                     'class' => 'form-label',
                 ],
+            ])
+
+            ->add('cepage', EntityType::class, [
+                'class' => Cepage::class,
+                'query_builder' => function (CepageRepository $r) {
+                    return $r->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                },
+                'label' => 'Cépages',
+                'label_attr' => [
+                    'class' => 'form-label mt-4'
+                ],
+                'choice_label' => 'name',
+            ])
+
+            ->add('region', EntityType::class, [
+                'class' => Region::class,
+                'query_builder' => function (RegionRepository $r) {
+                    return $r->createQueryBuilder('c')
+                        ->orderBy('c.nom', 'ASC');
+                },
+                'label' => 'Regions',
+                'label_attr' => [
+                    'class' => 'mb-3'
+                ],
+                'choice_label' => 'nom',
             ])
 
             ->add('Envoyer', SubmitType::class, [
