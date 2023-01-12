@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crus{% endblock %}
+
+{% block body %}
+    <h1>Liste des crus </h1>
+    <ul class="crus">
+        {% for cru in crus %}
+            <li><a href="{{ path('app_crus_show', { 'id': crus.id }) }}">{{ crus.nom }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
