@@ -3,68 +3,30 @@
 {% block title %}{{ carte.name }}{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="../style.css">
-    <nav class="contentUl">
-        <h1 class="titleform" style="font-size=25px;">{{ carte.name }}</h1>
-        <dl>
-            <img style="width: 200px;height: 200px;" src="{{ vich_uploader_asset(carte, 'imageFile') }}"
-                 onclick="displayMap()"/>
-            <dt class="titleform">Description</dt>
-            <dd class="textform">{{ carte.description }}</dd>
-        </dl>
-    </nav>
+    <div class="container">
 
-    <div id="mapContainer">
-        <div class="map">
-            <div id="map"></div>
-            <img src="https://cdn-icons-png.flaticon.com/512/561/561189.png" alt="fermer" onclick="displayMap()"/>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h1 class="mt-4">{{ carte.name }}
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_carte_edit', { id: carte.id }) }}"><span class="material-symbols-outlined">edit_square</span></a>
+            {% endif %}</h1>
+
+        <div style="display: flex;flex-direction: row" class="mt-4">
+            <img src="{{ vich_uploader_asset(carte, 'imageFile')  }}" alt="">
+            <dl>
+                <dt>Description</dt>
+                <dd>{{ carte.description|raw }}</dd>
+                <dt>Cépage</dt>
+                <dd>{{ carte.cepage.name ?? 'Aucune'  }}</dd>
+
+                <dt>Crus</dt>
+                <dd>{{ carte.crus.nom ?? 'Aucune'  }}</dd>
+            </dl>
         </div>
     </div>
-    <?php echo "123442" ?>
-    <script>
-        function displayMap() {
-            let mapContainer = document.getElementById('mapContainer');
-            mapContainer.classList.toggle('mapContainerVisible');
-        }
-    </script>
-
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-            crossorigin=""></script>
-
-    <script type="text/javascript">
-        let lat = 49.06001;
-        let lon = 4.2188;
-        let zoom = 10;
-        let myMap = null;
-
-        {% set coord = carte.coord|split(',') %}
-        {% if (coord[0] is defined) and (coord[0] is not null) %}
-            lat = {{ coord[0] }};
-        {% endif %}
-        {% if (coord[1] is defined) and (coord[1] is not null) %}
-            lon = {{ coord[1] }};
-        {% endif %}
-        {% if (coord[2] is defined) and (coord[2] is not null) %}
-            zoom = {{ coord[2] }};
-        {% endif %}
-
-        function initMap() {
-            myMap = L.map('map').setView([lat, lon], zoom);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-                // Il est toujours bien de laisser le lien vers la source des données
-                attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-                minZoom: 1,
-                maxZoom: 20
-            }).addTo(myMap);
-
-            L.marker([lat, lon]).addTo(myMap);
-        }
-
-        window.onload = function () {
-            initMap();
-        };
-    </script>
-
 {% endblock %}

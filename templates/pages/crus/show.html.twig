@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carte de la catégorie {{ cru.nom }}{% endblock %}
+
+{% block body %}
+    <h1>{{ cru.nom }}</h1>
+    {{ include('pages/carte/_carte.html.twig', {'crus': crus.carte}) }}
+{% endblock %}
+

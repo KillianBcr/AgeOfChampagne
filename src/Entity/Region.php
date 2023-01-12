@@ -16,9 +16,6 @@ class Region
     #[ORM\Column(length: 30)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $couleur = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -32,18 +29,6 @@ class Region
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getCouleur(): ?string
-    {
-        return $this->couleur;
-    }
-
-    public function setCouleur(string $couleur): self
-    {
-        $this->couleur = $couleur;
 
         return $this;
     }

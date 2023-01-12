@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AOC - Régions{% endblock %}
+
+{% block body %}
+    <h1>Liste des régions </h1>
+    <ul class="region">
+        {% for region in regions %}
+            <li><a href="{{ path('app_region_show', { 'id': region.id }) }}">{{ region.nom }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
