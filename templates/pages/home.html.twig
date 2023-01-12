@@ -7,35 +7,101 @@
     <div class="corps">
         <nav class="contentAcceuil">
             <nav class="column">
-                <a href="{{path('app_qrcode')}}"><img class="image2nd" src="img/qrReader.png" alt="qrcode logo"></a>
-                <a href="{{path('app_carte_public')}}"><img class="image2nd-2" src="img/card.png" alt="card logo"></a>
+                <a href="{{ path('app_qrcode') }}"><img class="image2nd" src="img/qrReader.png" alt="qrcode logo"></a>
+                <a href="{{ path('app_carte_public') }}"><img class="image2nd-2" src="img/card.png" alt="card logo"></a>
             </nav>
             <nav class="center">
-                <a href="https://www.ageofchampagne.fr/"><img class="logo" src="img/AOCLogo.png" alt="Logo Old Time Cats"></a>
+                <a href="https://www.ageofchampagne.fr/"><img class="logo" src="img/AOCLogo.png"
+                                                              alt="Logo Old Time Cats"></a>
             </nav>
             <nav class="column">
-                <a href="?"><img class="image2nd" src="img/maps.png" alt="maps logo"></a>
+                {#                <a href="?" onclick="displayMap()"><img class="image2nd" src="img/maps.png" alt="maps logo"></a> #}
+                <div onclick="displayMap()"><img class="image2nd" src="img/maps.png" alt="maps logo"></div>
                 <a href="?"><img class="image2nd-2" src="img/info.png" alt="info logo"></a>
             </nav>
         </nav>
         <div class=column>
             <div class="content2nd" style="opacity:90%">
                 <nav class="text">
-                <p id="txt">Vous voulez jouer ?<br>
-                <a href="https://www.ageofchampagne.fr/"><img id="jeu" src="img/jeu.png" alt="jeu image"></a>
-                <br>
-                Procurez vous le jeu en cliqnant sur la boite ci dessus !</p>
+                    <p id="txt">Vous voulez jouer ?<br>
+                        <a href="https://www.ageofchampagne.fr/"><img id="jeu" src="img/jeu.png" alt="jeu image"></a>
+                        <br>
+                        Procurez vous le jeu en cliqnant sur la boite ci dessus !</p>
                 </nav>
             </div>
             <nav class="contentUl" style="padding:10px;">
                 <p class="titleform">Vous voulez laisser un avis ou soumettre un probleme ?</p>
-                {{form(comment_form)}}
+                {{ form(comment_form) }}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{path('app_comment')}}">Voir Commentaire (disponible uniquement pour admin)</a>
+                    <a href="{{ path('app_comment') }}">Voir Commentaire (disponible uniquement pour admin)</a>
                 {% endif %}
             </nav>
         </div>
+
+        <div id="mapContainer">
+            {#            <div class="map"> #}
+            {#                <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=2.3400878906250004%2C48.09642606004488%2C5.965576171875%2C49.7315809334801&amp;layer=mapnik" style="border: 1px solid black"></iframe> #}
+            {#                <img src="https://img.icons8.com/ios-filled/512/cancel.png" alt="fermer" onclick="displayMap()"/> #}
+            {#            </div> #}
+
+            {#            <div class="map map-mobile">
+                <iframe
+                        width="600"
+                        height="450"
+                        style="border:0"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed/v1/place?key=API_KEY
+    &q=Space+Needle,Seattle+WA">
+                </iframe>
+                <img src="https://img.icons8.com/ios-filled/512/cancel.png" alt="fermer" onclick="displayMap()"/>
+            </div> #}
+
+            <div class="map">
+                <div id="map"></div>
+                <img src="https://cdn-icons-png.flaticon.com/512/561/561189.png" alt="fermer" onclick="displayMap()"/>
+            </div>
+        </div>
+
+
     </div>
+
+    <script>
+        function displayMap() {
+            let mapContainer = document.getElementById('mapContainer');
+            mapContainer.classList.toggle('mapContainerVisible');
+        }
+    </script>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""></script>
+
+    <script type="text/javascript">
+        let lat = 49.06001;
+        let lon = 4.2188;
+        let zoom = 10;
+        let myMap = null;
+
+
+        function initMap() {
+            myMap = L.map('map').setView([lat, lon], zoom);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                // Il est toujours bien de laisser le lien vers la source des données
+                attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                minZoom: 1,
+                maxZoom: 20
+            }).addTo(myMap);
+
+            // L.marker([lat, lon]).addTo(myMap);
+        }
+        window.onload = function () {
+            initMap();
+        };
+    </script>
+
     {% block footer %}
         {% include "partials/_footer.html.twig" %}
     {% endblock %}
