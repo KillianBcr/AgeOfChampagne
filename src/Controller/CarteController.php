@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Carte;
 use App\Form\CarteType;
 use App\Repository\CarteRepository;
+use App\Repository\RegionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -34,17 +35,19 @@ class CarteController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/carte', name: 'app_carte_public')]
-    public function indexPublic(CarteRepository $repository, Request $request): Response
+    public function indexPublic(CarteRepository $repository,RegionRepository $regionRepository, Request $request): Response
     {
         $search = $request->query->get('search');
         if (null == $search) {
             $search = '';
         }
+        $regions = $regionRepository->findAll();
         $cartes = $repository->search($search);
 
         return $this->render('pages/carte/index.public.html.twig', [
             'cartes' => $cartes,
             'search' => $search,
+            'regions'=>$regions
         ]);
     }
 
