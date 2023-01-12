@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Cepage;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CepageCrudController extends AbstractCrudController
 {
@@ -17,8 +20,7 @@ class CepageCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('name'),
         ];
     }
 

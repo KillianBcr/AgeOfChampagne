@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Crus;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CrusCrudController extends AbstractCrudController
 {
@@ -17,7 +20,7 @@ class CrusCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
+            TextField::new('nom'),
             TextEditorField::new('description'),
         ];
     }
