@@ -6,7 +6,8 @@
     "crus" : 13,
     "cepage" : 2,
     "imageFile" : "public/images/card/1.png",
-    "imageName" : "1.png"
+    "imageName" : "1.png",
+    "region" : 1
   },
 
   {
@@ -16,7 +17,9 @@
     "crus" : 1,
     "cepage" : 1,
     "imageFile" : "public/images/card/2.png",
-    "imageName" : "2.png"
+    "imageName" : "2.png",
+    "region" : 1
+
   },
 
   {
@@ -26,7 +29,9 @@
     "crus" : 14,
     "cepage" : 2,
     "imageFile" : "public/images/card/3.png",
-    "imageName" : "3.png"
+    "imageName" : "3.png",
+    "region" : 1
+
   },
 
   {
@@ -36,7 +41,9 @@
     "crus" : 2,
     "cepage" : 1,
     "imageFile" : "public/images/card/4.png",
-    "imageName" : "4.png"
+    "imageName" : "4.png",
+    "region" : 1
+
   },
 
   {
@@ -46,7 +53,9 @@
     "crus" : 3,
     "cepage" : 1,
     "imageFile" : "public/images/card/5.png",
-    "imageName" : "5.png"
+    "imageName" : "5.png",
+    "region" : 1
+
   },
 
   {
@@ -56,7 +65,9 @@
     "crus" : 15,
     "cepage" : 2,
     "imageFile" : "public/images/card/6.png",
-    "imageName" : "6.png"
+    "imageName" : "6.png",
+    "region" : 1
+
   },
 
   {
@@ -66,7 +77,9 @@
     "crus" : 24,
     "cepage" : 3,
     "imageFile" : "public/images/card/7.png",
-    "imageName" : "7.png"
+    "imageName" : "7.png",
+    "region" : 1
+
   },
 
   {
@@ -76,7 +89,9 @@
     "crus" : 25,
     "cepage" : 3,
     "imageFile" : "public/images/card/8.png",
-    "imageName" : "8.png"
+    "imageName" : "8.png",
+    "region" : 1
+
   },
 
   {
@@ -86,7 +101,9 @@
     "crus" : 26,
     "cepage" : 3,
     "imageFile" : "public/images/card/9.png",
-    "imageName" : "9.png"
+    "imageName" : "9.png",
+    "region" : 1
+
   },
 
   {
@@ -96,7 +113,9 @@
     "crus" : 27,
     "cepage" : 3,
     "imageFile" : "public/images/card/10.png",
-    "imageName" : "10.png"
+    "imageName" : "10.png",
+    "region" : 1
+
   },
 
   {
@@ -106,7 +125,9 @@
     "crus" : 4,
     "cepage" : 1,
     "imageFile" : "public/images/card/11.png",
-    "imageName" : "11.png"
+    "imageName" : "11.png",
+    "region" : 1
+
   },
 
   {
@@ -116,7 +137,9 @@
     "crus" : 28,
     "cepage" : 3,
     "imageFile" : "public/images/card/12.png",
-    "imageName" : "12.png"
+    "imageName" : "12.png",
+    "region" : 1
+
   },
 
   {
@@ -126,7 +149,9 @@
     "crus" : 35,
     "cepage" : 3,
     "imageFile" : "public/images/card/13.png",
-    "imageName" : "13.png"
+    "imageName" : "13.png",
+    "region" : 1
+
   },
 
   {
@@ -136,7 +161,9 @@
     "crus" : 5,
     "cepage" : 1,
     "imageFile" : "public/images/card/14.png",
-    "imageName" : "14.png"
+    "imageName" : "14.png",
+    "region" : 1
+
   },
 
   {
@@ -146,7 +173,9 @@
     "crus" : 29,
     "cepage" : 3,
     "imageFile" : "public/images/card/15.png",
-    "imageName" : "15.png"
+    "imageName" : "15.png",
+    "region" : 1
+
   },
 
   {
@@ -156,7 +185,9 @@
     "crus" : 16,
     "cepage" : 2,
     "imageFile" : "public/images/card/16.png",
-    "imageName" : "16.png"
+    "imageName" : "16.png",
+    "region" : 1
+
   },
 
   {
@@ -166,7 +197,9 @@
     "crus" : 6,
     "cepage" : 1,
     "imageFile" : "public/images/card/17.png",
-    "imageName" : "17.png"
+    "imageName" : "17.png",
+    "region" : 1
+
   },
 
   {
@@ -176,7 +209,9 @@
     "crus" : 17,
     "cepage" : 2,
     "imageFile" : "public/images/card/18.png",
-    "imageName" : "18.png"
+    "imageName" : "18.png",
+    "region" : 1
+
   },
 
   {
@@ -186,7 +221,9 @@
     "crus" : 18,
     "cepage" : 2,
     "imageFile" : "public/images/card/19.png",
-    "imageName" : "19.png"
+    "imageName" : "19.png",
+    "region" : 1
+
   },
 
   {
@@ -196,7 +233,9 @@
     "crus" : 30,
     "cepage" : 3,
     "imageFile" : "public/images/card/20.png",
-    "imageName" : "20.png"
+    "imageName" : "20.png",
+    "region" : 1
+
   },
 
   {
@@ -206,7 +245,9 @@
     "crus" : 36,
     "cepage" : 2,
     "imageFile" : "public/images/card/21.png",
-    "imageName" : "21.png"
+    "imageName" : "21.png",
+    "region" : 1
+
   },
 
   {
@@ -216,7 +257,9 @@
     "crus" : 19,
     "cepage" : 2,
     "imageFile" : "public/images/card/22.png",
-    "imageName" : "22.png"
+    "imageName" : "22.png",
+    "region" : 1
+
   },
 
   {
@@ -226,7 +269,9 @@
     "crus" : 20,
     "cepage" : 2,
     "imageFile" : "public/images/card/23.png",
-    "imageName" : "23.png"
+    "imageName" : "23.png",
+    "region" : 1
+
   },
 
   {
@@ -236,7 +281,9 @@
     "crus" : 7,
     "cepage" : 1,
     "imageFile" : "public/images/card/24.png",
-    "imageName" : "24.png"
+    "imageName" : "24.png",
+    "region" : 1
+
   },
 
   {
@@ -246,7 +293,9 @@
     "crus" : 8,
     "cepage" : 1,
     "imageFile" : "public/images/card/25.png",
-    "imageName" : "25.png"
+    "imageName" : "25.png",
+    "region" : 1
+
   },
 
   {
@@ -256,7 +305,9 @@
     "crus" : 31,
     "cepage" : 3,
     "imageFile" : "public/images/card/26.png",
-    "imageName" : "26.png"
+    "imageName" : "26.png",
+    "region" : 1
+
   },
 
   {
@@ -266,7 +317,9 @@
     "crus" : 9,
     "cepage" : 1,
     "imageFile" : "public/images/card/27.png",
-    "imageName" : "27.png"
+    "imageName" : "27.png",
+    "region" : 1
+
   },
 
   {
@@ -276,7 +329,9 @@
     "crus" : 32,
     "cepage" : 3,
     "imageFile" : "public/images/card/28.png",
-    "imageName" : "28.png"
+    "imageName" : "28.png",
+    "region" : 1
+
   },
 
   {
@@ -286,7 +341,9 @@
     "crus" : 21,
     "cepage" : 2,
     "imageFile" : "public/images/card/29.png",
-    "imageName" : "29.png"
+    "imageName" : "29.png",
+    "region" : 1
+
   },
 
   {
@@ -296,7 +353,9 @@
     "crus" : 33,
     "cepage" : 3,
     "imageFile" : "public/images/card/30.png",
-    "imageName" : "30.png"
+    "imageName" : "30.png",
+    "region" : 1
+
   },
 
   {
@@ -306,7 +365,9 @@
     "crus" : 10,
     "cepage" : 1,
     "imageFile" : "public/images/card/31.png",
-    "imageName" : "31.png"
+    "imageName" : "31.png",
+    "region" : 1
+
   },
 
   {
@@ -316,7 +377,9 @@
     "crus" : 22,
     "cepage" : 2,
     "imageFile" : "public/images/card/32.png",
-    "imageName" : "32.png"
+    "imageName" : "32.png",
+    "region" : 1
+
   },
 
   {
@@ -326,7 +389,9 @@
     "crus" : 23,
     "cepage" : 2,
     "imageFile" : "public/images/card/33.png",
-    "imageName" : "33.png"
+    "imageName" : "33.png",
+    "region" : 1
+
   },
 
   {
@@ -336,7 +401,9 @@
     "crus" : 34,
     "cepage" : 3,
     "imageFile" : "public/images/card/34.png",
-    "imageName" : "34.png"
+    "imageName" : "34.png",
+    "region" : 1
+
   },
 
   {
@@ -346,7 +413,9 @@
     "crus" : 11,
     "cepage" : 1,
     "imageFile" : "public/images/card/35.png",
-    "imageName" : "35.png"
+    "imageName" : "35.png",
+    "region" : 1
+
   },
 
   {
@@ -356,6 +425,8 @@
     "crus" : 12,
     "cepage" : 1,
     "imageFile" : "public/images/card/36.png",
-    "imageName" : "36.png"
+    "imageName" : "36.png",
+    "region" : 1
+
   }
 ]
