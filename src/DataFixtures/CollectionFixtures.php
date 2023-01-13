@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Collection;
+use App\Entity\Utilisateur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -19,10 +20,10 @@ class CollectionFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 10; ++$i) {
+        for ($i = 0; $i < 20; ++$i) {
             $collection = new Collection();
             $collection->setUserID(1);
-            $collection->setCardID($this->faker->numberBetween(1, 10));
+            $collection->setCardID($i+1);
             $manager->persist($collection);
         }
 

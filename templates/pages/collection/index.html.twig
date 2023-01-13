@@ -3,8 +3,12 @@
 {% block title %}Hello CollectionController!{% endblock %}
 
 {% block body %}
-Test
+<link rel="stylesheet" href="style.css">
+<p class="titleform">Votre collection de carte</p>
 {% for element in collection %}
-    <div>{{ element.name }}</div>
+    <p class="textform">Id :<br> {{ element.id }}</p>
+    <p class="textform">Nom :<br> {{ element.name }}</p>
+    <p class="textform">Description :<br> {{ element.description}}</p>
+    <hr style="color:white;">
 {% endfor %}
 {% endblock %}
