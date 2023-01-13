@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="../style.css">
     <div class="contentUl">
         <h1 class="titleform">{{ carte.name }}</h1>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('app_carte_edit', { id: carte.id }) }}"><span class="material-symbols-outlined">edit_square</span></a>
+        {% endif %}
         <dl>
                 <img src="{{ vich_uploader_asset(carte, 'imageFile') }}" onclick="displayMap()"/>
 
