@@ -22,6 +22,7 @@
 				{{ fiche.createdAt|date('d/m/Y') }}</span>
         </div>
 
+        <img src="{{ vich_uploader_asset(fiche, 'imageFile')  }}" alt="">
 
         <div class="mt-4">
             {{ fiche.description|raw }}
