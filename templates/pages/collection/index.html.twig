@@ -4,11 +4,15 @@
 
 {% block body %}
 <link rel="stylesheet" href="style.css">
-<p class="titleform">Votre collection de carte</p>
-{% for element in collection %}
-    <p class="textform">Id :<br> {{ element.id }}</p>
-    <p class="textform">Nom :<br> {{ element.name }}</p>
-    <p class="textform">Description :<br> {{ element.description}}</p>
-    <hr style="color:white;">
-{% endfor %}
+<p class="titleform" style="font-size:30px;">Votre collection de carte</p>
+<div class="collection">
+    {% for element in collection %}
+        <center>
+        <div class="contentLi" style="flex-direction:column; padding-right:50px;padding-left:50px">
+            <p class="titleform">{{ element.name }}</p>
+            <p class="textform">{{ element.description}}</p>
+        </div>
+        </center>
+    {% endfor %}
+</div>s
 {% endblock %}
