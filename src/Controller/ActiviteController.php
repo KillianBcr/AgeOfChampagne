@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Activite;
+use App\Form\ActiviteType;
 use App\Repository\ActiviteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -46,14 +47,14 @@ class ActiviteController extends AbstractController
     public function show(Activite $activite): Response
     {
         return $this->render('pages/activite/show.html.twig',
-            ['ativite' => $activite]);
+            ['activite' => $activite]);
     }
 
     #[Security("is_granted('ROLE_ADMIN')")]
     #[Route('/activite/edition/{id}', 'app_activite_edit', methods: ['GET', 'POST'])]
     public function edit(Activite $activite, Request $request, EntityManagerInterface $manager): Response
     {
-        $form = $this->createForm(Activite::class, $activite);
+        $form = $this->createForm(ActiviteType::class, $activite);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

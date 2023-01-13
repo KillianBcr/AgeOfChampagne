@@ -16,10 +16,9 @@
                 <a class="textform" style="text-decoration:none;" href ='{{ path('app_activite_show', {'id': activite.id}) }}'>
                 <li class="contentLi">
                     <nav class="column" style="margin-left:20px; justify-content: space-around;">
-                    <p class="textform" style="font-size:20px;">Nom de la activite : <strong>{{ activite.nom }}</strong></p>
-                    <p class="textform" style="font-size:20px;">Nom de la activite : <strong>{{ activite.id }}</strong></p>
-                    <p class="textform" style="font-size:20px;">Nom de la activite : <strong>{{ activite.icon() }}</strong></p>
-                    <p class="textform" style="font-size:20px;">Nom de la activite : <strong>{{ activite.description }}</strong></p>
+                    <p class="textform" style="font-size:20px;">Nom : <strong>{{ activite.nom }}</strong></p>
+                    <p class="textform" style="font-size:20px;">Icon : <strong>{{ activite.icon() }}</strong></p>
+                    <p class="textform" style="font-size:20px;">Description : <strong>{{ activite.description }}</strong></p>
                     </nav>
                 </li>
                 </a>

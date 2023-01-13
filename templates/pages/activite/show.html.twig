@@ -7,10 +7,11 @@
     <nav class="contentUl">
         <h1 class="titleform" style="font-size=25px;">{{ activite.nom }}</h1>
         {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('app_fiche_edit', { id: fiche.id }) }}"><span class="material-symbols-outlined">edit_square</span></a>
+        <a href="{{ path('app_activite_edit', { id: activite.id }) }}"><span class="material-symbols-outlined">edit_square</span></a>
         {% endif %}
         <dl>
-            <center><img style="width: 200px;height: 200px;" src="{{ vich_uploader_asset(activite, 'imageFile')  }}">
+            <dt class="titleform">Icone</dt>
+            <dd class="textform">{{ activite.icon }}</dd></center>
             <dt class="titleform">Description</dt>
             <dd class="textform">{{ activite.description }}</dd></center>
         </dl>
