@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CollectionController!{% endblock %}
+
+{% block body %}
+Test
+{% for element in collection %}
+    <div>{{ element.name }}</div>
+{% endfor %}
+{% endblock %}
