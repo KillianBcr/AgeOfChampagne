@@ -5,14 +5,17 @@
 {% block body %}
 <link rel="stylesheet" href="style.css">
 <p class="titleform" style="font-size:30px;">Votre collection de carte</p>
-<div class="collection">
+<div class="contentUl">
     <a href="{{ path('app_carte_public') }}">Liste de toutes les cartes</a>
     {% for element in collection %}
         <center>
+        <a href="{{ path('app_carte_show', {'id': element.id}) }}" style="text-decoration:none;">
         <div class="contentLi" style="flex-direction:column; padding-right:50px;padding-left:50px">
             <p class="titleform">{{ element.name }}</p>
+            <hr style="color:white;">
             <p class="textform">{{ element.description}}</p>
         </div>
+        </a>
         </center>
     {% endfor %}
 </div>s

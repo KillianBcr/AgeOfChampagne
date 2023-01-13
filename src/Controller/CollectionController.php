@@ -30,7 +30,7 @@ class CollectionController extends AbstractController
         $collection = $repository->findAll();
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery(
-            'SELECT c.name, c.description, c.imageName FROM App\Entity\Carte c
+            'SELECT c.name, c.description, c.imageName, c.id FROM App\Entity\Carte c
              WHERE c.id IN (SELECT coll.cardID FROM App\Entity\Collection coll WHERE coll.userID = :idUtilisateur)');
             $query->setParameter('idUtilisateur',$idUtilisateur);
         $collection = $query->getResult();
