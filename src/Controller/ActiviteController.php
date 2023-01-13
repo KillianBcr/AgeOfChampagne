@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ActiviteController extends AbstractController
 {
@@ -92,16 +93,15 @@ class ActiviteController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/partenaire/activite/creation', name: 'app_activite_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $manager): Response
+    #[Route('/partenaire/creation', name: 'app_activite_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
     {
         $activite = new Activite();
-        $form = $this->createForm(Activite::class, $activite);
+        $form = $this->createForm(ActiviteType::class, $activite);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $activite = $form->getData();
-
             $manager->persist($activite);
             $manager->flush();
 
@@ -113,7 +113,7 @@ class ActiviteController extends AbstractController
             return $this->redirectToRoute('app_activite');
         }
 
-        return $this->render('pages/activite/new.html.twig', [
+        return $this->render('pages/activite/add.html.twig', [
             'form' => $form->createView(),
         ]);
     }
