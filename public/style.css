@@ -98,6 +98,16 @@ body {
     }
 }
 
+.collection {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .collection .contentLi {
+    flex: 1 0 calc(33.33% - 20px);
+    margin: 10px;
+  }
+
 .content2nd {
     display: flex;
     opacity: 90%;

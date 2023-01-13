@@ -21,16 +21,21 @@ class CollectionController extends AbstractController
             'controller_name' => 'CollectionController',
         ]);
     }
-    public function showCollection($userId)
+    #[IsGranted('IS_AUTHENTICATED_FULLY')]
+    #[Route('/collection', name: 'app_collection')]
+    public function showCollection(CollectionRepository $repository)
     {
+        $utilisateur = $this->getUser();
+        $idUtilisateur = $utilisateur->getId();
+        $collection = $repository->findAll();
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery(
-            'SELECT c.name FROM App\Entity\Carte c
-             WHERE c.id IN (SELECT coll.cardID FROM App\Entity\Collection coll WHERE coll.userID = :userId'
-        )->setParameter('userId', $userId);
+            'SELECT c.name, c.description, c.imageName FROM App\Entity\Carte c
+             WHERE c.id IN (SELECT coll.cardID FROM App\Entity\Collection coll WHERE coll.userID = :idUtilisateur)');
+            $query->setParameter('idUtilisateur',$idUtilisateur);
         $collection = $query->getResult();
-    
-        return $this->render('index.html.twig', [
+
+        return $this->render('pages/collection/index.html.twig', [
             'collection' => $collection
         ]);
     }
