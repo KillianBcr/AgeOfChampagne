@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="style.css">
 <p class="titleform" style="font-size:30px;">Votre collection de carte</p>
 <div class="collection">
+    <a href="{{ path('app_carte_public') }}">Liste de toutes les cartes</a>
     {% for element in collection %}
         <center>
         <div class="contentLi" style="flex-direction:column; padding-right:50px;padding-left:50px">
