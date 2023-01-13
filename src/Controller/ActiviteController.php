@@ -59,7 +59,6 @@ class ActiviteController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $activite = $form->getData();
-            $activite->setUpdatedAt(new \DateTimeImmutable());
             $manager->persist($activite);
             $manager->flush();
 

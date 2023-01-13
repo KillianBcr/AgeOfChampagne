@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Activite;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,6 +16,11 @@ class ActiviteType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('icon')
+            ->add('Envoyer', SubmitType::class, [
+                'attr' => [
+                    'class' => 'send',
+                ],
+            ])
         ;
     }
 
