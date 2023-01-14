@@ -29,11 +29,17 @@ L'application devra posséder les fonctionnalités suivantes :
 Ci dessous le MCD de la base de donnée<br>
 <img class="fit-picture"
      src="image/mcd.png"
-     alt="MCD">
+     alt="MCD"> <br>
+<h4> Compte administrateur pour le site web :</h4>
+<li>Adresse mail : root@example.com
+<li>Mot de passe : test
+
 <h2>Scripts Composer | fichier de configuration</h2>
 Les scripts ajouté dans le composer.json seront listés ci-dessous...<br>
 Liste et utilité des scripts Composer :
 <dl>
-	<dt>Nom script | commande utilisé<dt>
-		<dd>utilité de la commande</dd>
+	<dt>composer install | composer install<dt>
+		<dd>installe composer</dd>
+	<dt>composer start | symfony serve<dt>
+		<dd>démare le serveur web</dd>
 </dl>
